@@ -1,0 +1,63 @@
+/* Login.css */
+
+/* Ensures the login form is centered vertically and horizontally */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+/* Styles for the login form */
+.login {
+  text-align: center;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* White background */
+}
+
+/* Styles for the login title */
+.login-title {
+  font-size: 32px; /* Larger title */
+  margin-bottom: 10px; /* Smaller bottom margin */
+}
+
+/* Styles for the login subtitle */
+.login-subtitle {
+  font-size: 18px; /* Slightly smaller subtitle */
+  margin-bottom: 20px; /* Larger bottom margin */
+}
+
+/* Styles for the sign-out button */
+button {
+  padding: 12px 24px; /* Increased padding for more comfortable touch/click */
+  background-color: #007bff; /* Bootstrap blue */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px; /* Increased top margin for separation */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the sign-out button */
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Container for user information */
+.user-info {
+  margin-top: 30px; /* Increased top margin for separation */
+}
+
+/* Styles for the user avatar image */
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Circular avatar */
+  object-fit: cover; /* Ensure the image covers the entire area */
+}
