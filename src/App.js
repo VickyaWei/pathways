@@ -18,16 +18,14 @@ import Settings from "./pages/Settings";
 import Logout from "./pages/Logout";
 import SideBar from "./components/Sidebar";
 import "./App.css";
+import MentorPal from "./pages/MentorPal";
+import KeywordDropdown from "./components/KeywordDropdown";
+
+
 
 function App() {
   return (
-    // <Poppages />
-    <div className="App">
-      <Header />
-      <div className="content-wrapper">
-        {/* <Sidebar /> */}
-      </div>
-    </div>
+    <MentorPal /> 
   );
 }
 // <Login />

@@ -7,9 +7,10 @@ import App from './App';
 //  import Sidebar from './css/Sidebar.css';
 import Login from './css/Login.css';
 import Popups from './css/Popups.css';
-
-
-
+import MentorPal from './css/MentorPal.css';
+import SearchBar from './css/SearchBar.css';
+import KeywordDropdown from './css/KeywordDropdown.css';
+import InputSearch from './css/InputSearch.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
