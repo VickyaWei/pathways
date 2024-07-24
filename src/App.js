@@ -20,12 +20,16 @@ import SideBar from "./components/Sidebar";
 import "./App.css";
 import MentorPal from "./pages/MentorPal";
 import KeywordDropdown from "./components/KeywordDropdown";
+import TileList from "./components/TopTiles/TopTileList";
+import GetResearchExperience from "./pages/GetResearchExperience";
+import { RecommenderPage } from "./pages/RecommenderPage";
+
 
 
 
 function App() {
   return (
-    <MentorPal /> 
+    <RecommenderPage />
   );
 }
 // <Login />
