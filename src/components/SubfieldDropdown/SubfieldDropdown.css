@@ -1,0 +1,9 @@
+.dropdown-container {
+  width: 100%;
+}
+
+.react-select__control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-family: 'Roboto', sans-serif;
+}

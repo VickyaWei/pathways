@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+/* Resetting default padding, margin, and box-sizing for all elements */
+
+
+/* Styling for the header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #084b8a;
+  padding: 0px 0px;
+}
+
+/* Styling for the site title */
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin: 0;  
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto', sans-serif; 
+}
+
+/* Container to align the logos to the right */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push the logo container to the right */
+}
+
+/* Common styling for both logos */
+.csuf-logo,
+.nsf-logo {
+  height: 70px; /* Adjust the height as needed */
+  margin: 0; /* Remove margin around the logos */
+  padding: 0; /* Remove padding around the logos */
+  display: block; /* Ensure logos are block-level elements */
+  box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+}
+
+.csuf-logo {
+  margin-right: 10px; /* Add some space between the two logos */
+}

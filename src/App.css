@@ -1,29 +1,4 @@
-/* App.css */
-.App {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 250px 1fr;
-    height: 100vh;
-}
-  
-.content-wrapper {
-    display: contents; /* This allows direct children to participate in the parent's grid */
-}
-  
-.sidebar {
-    grid-row: 1; /* Place in the second row */
-    grid-column: 1; /* Place in the first column */
-    background-color: #f0f0f0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-  
-.main-content {
-    grid-row: 1; /* Place in the second row */
-    grid-column: 1; /* Place in the second column */
-    padding: 10px;
-    background-color: #fff;
-    overflow-y: auto;
-  }
+
 
   
 

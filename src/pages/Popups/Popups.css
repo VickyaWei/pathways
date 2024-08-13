@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"); /* Rounded font for title */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"); /* Rounded font for body */
+
+.popupBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupContainer {
+  width: 900px;
+  height: 600px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  position: relative; /* Added this line */
+}
+
+.popupContainer .title h1 { 
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.popupContainer .body p {
+  font-family: 'Nunito', sans-serif;
+  flex: 50%;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  font-size: 1.0rem;
+  text-align: left;
+}
+
+.popupContainer .middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex: 1;
+}
+
+/* .popupContainer .leftNote {
+  flex: 1;
+  font-size: 1.0rem;
+  text-align: left;  
+}
+
+.popupContainer .rightNote {
+  flex: 1;
+  font-size: 1.0rem;
+  text-align: right;
+  align-items: center;
+} */
+
+
+.popupContainer .body p.note {
+  font-style: italic;
+  color: #837f7f;
+  margin-top: 10px;
+}
+
+.popupContainer .popupImage {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+
+.arrowButton {
+  width: 50px;
+  height: 50px;
+  font-size: 5px;
+  cursor: pointer;
+  color: white;
+  background-color: green;
+  border-radius: 50%; /* Make the button circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 55%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for exact centering */
+  z-index: 1; /* Ensure arrows are below the content */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.arrowButton.left {
+  left: -30px; /* Adjust to your preference */
+}
+
+.arrowButton.right {
+  right: -30px; /* Adjust to your preference */
+}
+
+letGoButton
+
+.arrowButton:hover {
+  opacity: 0.5; /* Fade effect on hover */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Shallow shadow on hover */
+}
+
+.arrowButton:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Deeper shadow on click */
+}
+
+.letGoButton {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.letGoButton:hover {
+  opacity: 0.5;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.letGoButton:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}

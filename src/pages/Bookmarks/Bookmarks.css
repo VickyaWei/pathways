@@ -1,0 +1,18 @@
+.bookmarks {
+    padding: 20px; /* Adjust the padding around the bookmarks section */
+  }
+  
+  .bookmark-tiles {
+    display: flex; /* Layout tiles in a horizontal line */
+    flex-wrap: wrap; /* Allow wrapping to the next line if there is not enough space */
+    gap: 20px; /* Space between tiles */
+    justify-content: flex-start; /* Align items to the start of the container */
+  }
+  
+  .tile {
+    /* Add styles here to control the size and spacing of tiles */
+    flex: 1 1 200px; /* Allow tiles to grow and shrink, with a base width */
+    max-width: 300px; /* Maximum width for tiles */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+  }
+  

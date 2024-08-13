@@ -1,0 +1,58 @@
+.settings-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the container and add space around it */
+    padding: 20px;
+    background-color: #ffffff; /* Neutral white background */
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Lighter shadow for a subtle effect */
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Space between form groups */
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0; /* Remove bottom margin */
+    font-weight: normal; /* Reset font weight to normal */
+    margin-right: 15px; /* Space between label and checkbox */
+    flex: 1; /* Allow label to take necessary space */
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px; /* Space inside inputs and selects */
+    border: 1px solid #ccc; /* Neutral border color */
+    border-radius: 4px;
+  }
+  
+  .form-group input[type="checkbox"] {
+    width: 24px; /* Larger checkbox size */
+    height: 24px; /* Larger checkbox size */
+    margin-right: 15px; /* Space between checkbox and label */
+  }
+  
+  .save-button {
+    background-color: #007bff; /* Neutral blue background */
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Space inside the button */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px; /* Space above the button */
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3; /* Darker blue for hover effect */
+  }
+  

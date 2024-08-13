@@ -1,0 +1,15 @@
+.disclaimer-container {
+    margin-top: 20px; /* Space above disclaimer */
+    padding: 15px; /* Padding around the content */
+    background-color: #fdfdfd; /* Light background for the disclaimer */
+    border-radius: 4px; /* Rounded corners for the disclaimer */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the disclaimer */
+    font-family: 'Open Sans', sans-serif; /* Ensure the font matches the rest of the page */
+}
+
+.disclaimer-text {
+    font-size: 14px; /* Slightly smaller font size */
+    color: #666; /* Medium text color for readability */
+    line-height: 1.4; /* Line height for readability */
+    margin: 0; /* Remove default margin */
+}

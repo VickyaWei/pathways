@@ -1,0 +1,35 @@
+.Find-Graduate-Schools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-top: -5px;
+  }
+  
+ .dropdown-list {
+    display: flex;
+    gap: 10px; /* Adjust space between dropdowns as needed */
+    margin-bottom: 20px; /* Add space below the dropdowns */
+  }
+ 
+  .started-degree-tiles {
+    margin-top: -10px;
+    flex-direction: column;
+  }
+  
+  .changed-degree-tiles-container {
+    margin-top: -10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  }
+  
+  .degree-general-tiles {
+    margin-top: 0px;
+    grid-column: 1 / 2; /* Occupies the first column */
+    padding: 1rem; /* Space within the column */
+  }
+  
+  .degree-additional-tiles {
+    grid-column: 2 / 4; /* Occupies the second to fourth columns */
+  }
+  

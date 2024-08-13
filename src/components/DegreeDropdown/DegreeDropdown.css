@@ -1,0 +1,33 @@
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin-top: -5px;
+  }
+  
+  label {
+    margin-bottom: -10px; 
+    margin-right: 10px;
+    
+  }
+  
+  select {
+    padding: 8px;
+    width: 300px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Add space between label and select */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    transition: border-color 0.3s ease; 
+  }
+  
+  .dropdown-container select:focus {
+    border-color: #007bff; /* Border color on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .dropdown-container option {
+    padding: 10px; /* Padding for each option */
+  }

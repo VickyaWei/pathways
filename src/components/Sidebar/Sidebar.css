@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Container for the entire layout */
+.container {
+  display: flex;
+  min-height: 10vh; /* Ensure it takes the full viewport height */
+}
+
+/* Sidebar container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #ffffff; /* Sidebar background color: white */
+  color: #084b8a; /* Text color */
+  transition: width 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* When sidebar is collapsed */
+.sidebar.closed {
+  width: 75px;
+}
+
+/* Top section of the sidebar */
+.top_section {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 18px;
+  background-color: #084b8a; /* Background color for the top section */
+}
+
+/* Logo styling */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 40px;
+  color: #ffffff; /* Logo text color */
+}
+
+/* Bars icon styling */
+.bars {
+  font-size: 65px;
+  cursor: pointer;
+  color: #ffffff; /* Bars icon color */
+}
+
+/* Link styling */
+.link {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: #084b8a; /* Link text color */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: #e0e0e0; /* Light background on hover */
+}
+
+/* Active link styling */
+.link.active {
+  background-color: #c0c0c0; /* Slightly darker background for active link */
+}
+
+/* Icon styling */
+.icon {
+  font-size: 18px;
+  color: #084b8a; /* Icon color */
+}
+
+/* Link text styling */
+.link_text {
+  margin-left: 10px;
+  color: #084b8a; /* Link text color */
+}
+
+/* Main content styling */
+main {
+  margin-left: 200px; /* Adjust this value to match the sidebar width */
+  padding: 20px;
+  flex-grow: 1;
+  background-color: #f9f9f9; /* Background color for the main content area */
+  transition: margin-left 0.3s ease;
+}
+
+/* Adjust margin when sidebar is closed */
+.sidebar.closed + main {
+  margin-left: 60px; /* Adjust this value to match the collapsed sidebar width */
+}
