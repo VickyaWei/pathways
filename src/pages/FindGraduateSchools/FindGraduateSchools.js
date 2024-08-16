@@ -25,19 +25,19 @@ const FindGraduateSchools = () => {
   return (
     <div className="Find-Graduate-Schools">
       <div className="dropdown-list">
-      <SubfieldDropdown
-        onSubfieldChange={handleSubfieldChange}
-        className="subfield-dropdown"
-      />
-      <DegreeDropdown
-        onDegreeChange={handleDegreeChange}
-        className="degree-dropdown"
-      />
+        <DegreeDropdown
+          onDegreeChange={handleDegreeChange}
+          className="degree-dropdown"
+        />
+        <SubfieldDropdown
+          onSubfieldChange={handleSubfieldChange}
+          className="subfield-dropdown"
+        />
       </div>
 
       <div
         className={
-          (selectedDegree || selectedSubfield)
+          selectedDegree || selectedSubfield
             ? "changed-degree-tiles-container"
             : "started-degree-tiles"
         }

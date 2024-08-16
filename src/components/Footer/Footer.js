@@ -1,37 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Button, Box } from "@mui/material";
+import "./Footer.css"; // Link your CSS file
 
-import "./Footer.css";
-
-const Footer = ({ onPrevious, onNext }) => {
-  const initialTimeInSeconds = 30 * 60; // 30 minutes in seconds
-  const [timeLeft, setTimeLeft] = useState(initialTimeInSeconds);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
-
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval);
-  }, []);
-
-  // Convert seconds into minutes and seconds
-  const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = timeInSeconds % 60;
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
-
+export const Footer = ({
+  onPrevious,
+  onNext,
+  isNextButtonDisabled,
+  previousUrl,
+  nextUrl,
+}) => {
   return (
-    <footer className="footer-container">
-      <button className="footer-button-left" onClick={onPrevious}>
+    <Box className="footer-container">
+      <Button className="footer-button" onClick={() => onPrevious(previousUrl)}>
         Previous
-      </button>
-      <div className="footer-timer">Time Left: {formatTime(timeLeft)}</div>
-      <button className="footer-button-right" onClick={onNext}>
-        Next
-      </button>
-    </footer>
+      </Button>
+      <Button
+        className="footer-button"
+        onClick={() => onNext(nextUrl)}
+        disabled={isNextButtonDisabled} // Disable button based on timer
+      >
+        Finish Survey
+      </Button>
+    </Box>
   );
 };
 

@@ -8,6 +8,7 @@ import PopupModals from "../../components/PopupModals/PopupModals";
 import { GeneralTileList } from "../../components/TileList/General/GeneralTileList";
 import { AdditionalTileList } from "../../components/TileList/Additional/AdditionalTileList";
 import FourTileList from "../../components/TileList/TileList/FourTileList";
+import { CareerTileList } from "../../components/TileList/CareerTileList/CareerTileList";
 
 const ExploreCareers = () => {
   const [selectedSubfield, setSelectedSubfield] = useState("");
@@ -47,7 +48,7 @@ const ExploreCareers = () => {
               />
             </div>
             <div className="career-additional-tiles">
-              <AdditionalTileList 
+              <CareerTileList 
                 client={careerAdditionalTileClient}
                 contentType="careerDownTiles"
                 selectedSubfield={selectedSubfield}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Tile from '../Tile/Tile';
-import "./FourTileList.css"
+import "./FourTileList.css";
 
 const FourTileList = ({ client, contentType, selected }) => {
   const [tiles, setTiles] = useState([]);
@@ -43,17 +43,27 @@ const FourTileList = ({ client, contentType, selected }) => {
     fetchTiles();
   }, [fetchTiles]);
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   const filteredTiles = selected
     ? tiles.filter(tile => tile.data.keyword && tile.data.keyword.includes(selected))
     : tiles;
 
+  const shuffledTiles = shuffleArray([...filteredTiles]); // Shuffle the filtered tiles
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading tiles: {error.message}</p>;
-  if (!filteredTiles.length) return <p>No tiles available.</p>;
+  if (!shuffledTiles.length) return <p>No tiles available.</p>;
 
   return (
     <div className="four-tile-list">
-      {filteredTiles.map((tile) => (
+      {shuffledTiles.map((tile) => (
         <Tile
           key={tile.id}
           id={tile.id}

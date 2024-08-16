@@ -2,28 +2,43 @@
 
 /* IntroTiles.css */
 .mentorpal .intro-tiles-container {
-  height: 180px;
+  height: 140px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; 
   padding: 20px;
   background-color: #f0f0f0; 
   position: relative;
+  transition: background-color 0.5s ease;
 }
 
 .mentorpal .arrow {
   display: flex;
   align-items: center;
-  font-size: 2em;
-  color: #666; 
-  padding: 0 10px;
+  font-size: 2.5em; /* Adjust size as needed */
+  color: #084b8a; /* Use a color that matches your design */
+  padding: 0 15px; /* Adjust spacing around the arrow */
+  font-weight: bold; /* Make the arrow thicker */
+
 }
+
 
 .mentorpal .intro-tile-content {
   padding: 10px 20px 20px;
-
   text-align: center; 
   font-family: 'Roboto';
+}
+
+.mentorpal .intro-tile {
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center;
+  background-color: #fff; /* Optional: background color for tiles */
+  border-radius: 8px; /* Optional: rounded corners for tiles */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+  padding: 10px;
 }
 
 .mentorpal .intro-tile-title {
@@ -34,8 +49,8 @@
 }
 
 .mentorpal .intro-tile-image {
-  width: 100%;
-  height: 90px;
+  width: auto;
+  height: 80px;
   object-fit: cover; 
 }
 
@@ -77,7 +92,7 @@
 }
 
 .mentor-cards {
-  grid-column: 2 / 5; /* Occupies columns 2, 3, and 4 */
+  grid-column: 2 / 6; /* Occupies columns 2, 3, and 4 */
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;

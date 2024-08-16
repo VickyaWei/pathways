@@ -12,6 +12,7 @@ import Homepage from "../Homepage/Homepage";
 import Set from "../Set/Settings";
 import "./RecommenderPage.css";
 import Subhead from "../../components/Subhead/Subhead";
+import Footer from "../../components/Footer/Footer";
 
 const MainContent = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const MainContent = () => {
 
   return (
     <div className="main-container">
+      <Header />
       {showSubhead && <Subhead />}
       <div className="content">
         <Routes>
@@ -34,6 +36,7 @@ const MainContent = () => {
           <Route path="/find-internships" element={<FindInternships />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

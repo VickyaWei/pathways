@@ -6,6 +6,7 @@ import { Card } from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
 import "./MentorPal.css";
 import { data as mentors } from "../../data"; // Assuming mentors data is imported from data.js
+import FooterWithTimer from "../../components/Footer/FooterWithTimer";
 
 const MentorPal = () => {
   const [query, setQuery] = useState("");
@@ -58,18 +59,22 @@ const MentorPal = () => {
   }, [mentors]);
 
   const mentorData = [
-    { title: "Select a mentor", image: "./images/mentorpanel.jpg", number: 1 },
+    { title: "Select a mentor", image: "./images/chat.png", number: 1 },
     {
       title: "Interview mentor(s)",
-      image: "./images/mentorpal_intro.jpg",
+      image: "./images/selective.png",
       number: 2,
     },
     {
       title: "Get personalized resources",
-      image: "./images/mentorpal_intro.jpg",
+      image: "./images/human-resources.png",
       number: 3,
     },
-    { title: "Return Users", image: "./images/mentorpal_intro.jpg", number: 4 },
+    {
+      title: "Return Users",
+      image: "./images/returning-visitor.png",
+      number: 4,
+    },
   ];
 
   return (
@@ -85,8 +90,8 @@ const MentorPal = () => {
               </div>
               <img
                 src={mentor.image}
+                alt={mentor.title}
                 className="intro-tile-image"
-                alt={`Tile ${mentor.number}`}
               />
             </div>
             {index < mentorData.length - 1 && <div className="arrow">→</div>}
@@ -127,7 +132,7 @@ const MentorPal = () => {
         </div>
       </div>
 
-      <Footer />
+      <FooterWithTimer />
     </div>
   );
 };

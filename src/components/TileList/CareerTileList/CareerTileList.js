@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Tile from "../Tile/Tile";
-import "./AdditionalTileList.css";
+import "./CareerTileList.css";
 
-export const AdditionalTileList = ({
+export const CareerTileList = ({
   client,
   contentType,
-  selectedSubfield,
-  selectedDegree,
+  selectedSubfield = [], // Default to empty array if not provided
 }) => {
   const [tiles, setTiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +17,7 @@ export const AdditionalTileList = ({
       const { id } = sys;
       const tileTitle = fields.title;
       const tileDescription = fields.description;
-      const tileImage = fields.image.fields.file.url;
+      const tileImage = fields.image?.fields?.file?.url; // Optional chaining for safety
       const imageUrl = fields.url;
       const data = fields.data || {};
 
@@ -49,22 +48,13 @@ export const AdditionalTileList = ({
   }, [fetchTiles]);
 
   const filteredTiles = tiles.filter((tile) => {
-    const keywordMatchesSubfield = selectedSubfield.length === 0 || 
-        (tile.data.keyword && selectedSubfield.some(subfield => tile.data.keyword.includes(subfield)));
-    const keywordMatchesDegree = selectedDegree.length === 0 ||
-        (tile.data.keyword && selectedDegree.some(degree => tile.data.keyword.includes(degree)));
+    // Ensure tile.data.keyword is an array
+    const keywords = tile.data.keyword || [];
+    const keywordMatchesSubfield = 
+      selectedSubfield.length === 0 || 
+      selectedSubfield.some(subfield => keywords.includes(subfield));
 
-    if (selectedDegree && selectedSubfield.length) {
-        // If both are selected, return tiles that match both.
-        return keywordMatchesSubfield && keywordMatchesDegree;
-    } else if (selectedDegree) {
-        // If only the degree is selected, return tiles that match the degree.
-        return keywordMatchesDegree;
-    } else if (selectedSubfield.length) {
-        // If only the subfield is selected, return tiles that match the subfield.
-        return keywordMatchesSubfield;
-    } 
-    return true; // Return all tiles if neither degree nor subfield is selected.
+    return keywordMatchesSubfield;
   });
 
   const shuffleArray = (array) => {

@@ -1,0 +1,65 @@
+/* FooterWithTimer.css */
+
+.footer-with-timer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px; /* Adjust padding as needed */
+  border-top: 1px solid #ccc;
+  background-color: #f1f1f1;
+  z-index: 1000;
+}
+
+.footer-timer-button {
+  background-color: #084b8a !important;
+  color: white !important; 
+  border: none;
+  padding: 8px 15px; /* Adjust padding for button size */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.footer-timer-button:disabled {
+
+  opacity: 0.7; /* Slightly fade the button to indicate it's disabled */
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
+
+.footer-timer-button:hover:not(:disabled) {
+  background-color: #063f6c; /* Darker blue on hover */
+}
+
+.footer-timer {
+  font-size: 16px;
+  color: #333;
+}
+
+.snooze-button {
+  background-color: #084b8a;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.snooze-button:hover {
+  background-color: #063f6c;
+}
+
+.recommendations-button {
+  background-color: #28a745; /* Green color for the recommendations button */
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.recommendations-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}

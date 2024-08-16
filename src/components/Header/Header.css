@@ -34,7 +34,7 @@ header {
 /* Common styling for both logos */
 .csuf-logo,
 .nsf-logo {
-  height: 70px; /* Adjust the height as needed */
+  height: 50px; /* Adjust the height as needed */
   margin: 0; /* Remove margin around the logos */
   padding: 0; /* Remove padding around the logos */
   display: block; /* Ensure logos are block-level elements */

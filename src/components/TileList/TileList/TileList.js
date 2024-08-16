@@ -43,17 +43,27 @@ const TileList = ({ client, contentType, selected }) => {
     fetchTiles();
   }, [fetchTiles]);
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   const filteredTiles = selected && selected.length > 0
     ? tiles.filter(tile => selected.some(subfield => tile.data.keyword && tile.data.keyword.includes(subfield)))
     : tiles;
 
+  const shuffledTiles = shuffleArray([...filteredTiles]); // Create a shuffled copy of the filtered tiles
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading tiles: {error.message}</p>;
-  if (!filteredTiles.length) return <p>No tiles available.</p>;
+  if (!shuffledTiles.length) return <p>No tiles available.</p>;
 
   return (
     <div className="tile-list">
-      {filteredTiles.map((tile) => (
+      {shuffledTiles.map((tile) => (
         <Tile
           key={tile.id}
           id={tile.id}

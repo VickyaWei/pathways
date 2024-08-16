@@ -1,33 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); /* Importing the font */
-
 .footer-container {
-  background-color: #084b8a;
-  padding: 0.75em; 
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  font-family: 'Roboto', sans-serif; 
-}
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px; /* Reduced padding for a smaller height */
+    border-top: 1px solid #ccc;
+    background-color: #f1f1f1;
+    z-index: 1000; /* Ensure footer is above other content */
+  }
+  
+  .footer-container .footer-button {
+    background-color: #084b8a;
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Reduced padding for a smaller button */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size */
+  }
 
-.footer-timer {
-  font-size: 1.2em;
-  color: white; /* Set font color to white */
-  flex: 1; /* Take up remaining space */
-  text-align: center; /* Center the text */
-  margin: 0; /* Remove any default margin */
-  font-family: 'Roboto', sans-serif; /* Apply the new font */
-}
-
-.footer-button-left,
-.footer-button-right {
-  padding: 0.3rem 0.5rem; 
-  background-color: #FFC107; /* Background color */
-  color: white; /* Font color */
-
-  cursor: pointer;
-  font-family: 'Roboto', sans-serif; 
-}
+  .footer-button:hover {
+    background-color: #063f6c !important; /* Darker blue on hover */
+    transition: background-color 0.3s ease !important; /* Smooth transition for hover effect */
+  }
