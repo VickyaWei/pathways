@@ -5,9 +5,9 @@ import ResearchTopTile from "../../components/ResearchTiles/ResearchTopTile";
 import ResearchDownTile from "../../components/ResearchTiles/ResearchDownTile";
 import Disclaimer from "../../components/Disclaimer/Disclaimer";
 
-const GetResearchExperience = () => {
+const GetResearchExperience = ({isSidebarOpen}) => {
   return (
-    <div className="GetResearchExperience">
+<div className={`get-research-experience ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
       <div className="facultyContainer">
         <p className="title">
           Looks like you want to get more research experience!

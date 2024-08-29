@@ -1,6 +1,4 @@
-/* Keywords.css */
 
-/* Centering the dropdown container */
 .KeywordDropdown {
   display: flex;
   justify-content: center;
@@ -9,13 +7,13 @@
   padding: 20px;
 }
 
-/* Styling for dropdown items */
+
 .dropdown-item {
   display: flex;
   flex-direction: column;
 }
 
-/* Styling for submenu items */
+
 .submenu-item {
   display: flex;
   align-items: center;
@@ -27,18 +25,18 @@
   cursor: pointer;
 }
 
-/* Styling for checkboxes and labels */
+
 .submenu-item input[type="checkbox"] {
   margin-right: 8px;
 }
 
-/* Hover effect for submenu items */
+
 .submenu-item:hover {
   background-color: #f0f0f0;
   border-radius: 4px;
 }
 
-/* Ensure the MultilevelDropdown doesn't overflow the screen */
+
 .MuiPopover-paper {
   max-width: 300px;
   min-width: 200px;
@@ -47,7 +45,7 @@
   overflow: hidden;
 }
 
-/* Styling for the dropdown menu */
+
 .MuiPaper-root {
   background-color: white;
   border: 1px solid #ddd;

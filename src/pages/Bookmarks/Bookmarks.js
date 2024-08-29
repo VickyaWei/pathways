@@ -1,22 +1,37 @@
-// src/components/Bookmarks/Bookmarks.js
 import React from 'react';
 import useBookmarks from '../../hooks/useBookmarks';
 import Tile from '../../components/TileList/Tile/Tile';
-import "./Bookmarks.css"
+import './Bookmarks.css';
 
 const Bookmarks = () => {
-  const { bookmarkedItems } = useBookmarks(); // Correct usage, just destructuring
+  const { bookmarkedMentors, bookmarkedResources } = useBookmarks();
 
   return (
     <div className="bookmarks">
-      <div className="bookmark-tiles">
-        {bookmarkedItems.length === 0 ? (
-          <p>No bookmarks yet.</p>
-        ) : (
-          bookmarkedItems.map((item) => (
-            <Tile key={item.id} {...item} />
-          ))
-        )}
+      <div className="bookmark-section">
+        <h2>Favorite Resources</h2>
+        <div className="bookmark-tiles">
+          {bookmarkedResources.length === 0 ? (
+            <p>No favorite resources yet.</p>
+          ) : (
+            bookmarkedResources.map((resource) => (
+              <Tile key={resource.id} {...resource} />
+            ))
+          )}
+        </div>
+      </div>
+
+      <div className="bookmark-section">
+        <h2>Favorite Mentors</h2>
+        <div className="bookmark-tiles">
+          {bookmarkedMentors.length === 0 ? (
+            <p>No favorite mentors yet.</p>
+          ) : (
+            bookmarkedMentors.map((mentor) => (
+              <Tile key={mentor.id} {...mentor} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

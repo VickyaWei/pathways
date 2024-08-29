@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"); /* Rounded font for title */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"); /* Rounded font for body */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"); 
 
 .popupBackground {
   width: 100vw;
@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px;
-  position: relative; /* Added this line */
+  position: relative;
 }
 
 .popupContainer .title h1 { 
@@ -83,34 +83,34 @@
   cursor: pointer;
   color: white;
   background-color: green;
-  border-radius: 50%; /* Make the button circular */
+  border-radius: 50%; 
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 55%; /* Center vertically */
-  transform: translateY(-50%); /* Adjust for exact centering */
-  z-index: 1; /* Ensure arrows are below the content */
+  top: 55%; 
+  transform: translateY(-50%); 
+  z-index: 1;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .arrowButton.left {
-  left: -30px; /* Adjust to your preference */
+  left: -30px; 
 }
 
 .arrowButton.right {
-  right: -30px; /* Adjust to your preference */
+  right: -30px;
 }
 
 letGoButton
 
 .arrowButton:hover {
-  opacity: 0.5; /* Fade effect on hover */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Shallow shadow on hover */
+  opacity: 0.5; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
 }
 
 .arrowButton:active {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Deeper shadow on click */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
 .letGoButton {

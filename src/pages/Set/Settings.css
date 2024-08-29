@@ -1,11 +1,11 @@
 .settings-container {
     width: 100%;
     max-width: 600px;
-    margin: 20px auto; /* Center the container and add space around it */
+    margin: 20px auto; 
     padding: 20px;
-    background-color: #ffffff; /* Neutral white background */
+    background-color: #ffffff; 
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Lighter shadow for a subtle effect */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
   
   .settings-form {
@@ -14,45 +14,45 @@
   }
   
   .form-group {
-    margin-bottom: 20px; /* Space between form groups */
+    margin-bottom: 20px; 
     display: flex;
-    align-items: center; /* Align items vertically centered */
+    align-items: center; 
   }
   
   .form-group label {
     display: block;
-    margin-bottom: 0; /* Remove bottom margin */
-    font-weight: normal; /* Reset font weight to normal */
-    margin-right: 15px; /* Space between label and checkbox */
-    flex: 1; /* Allow label to take necessary space */
+    margin-bottom: 0; 
+    font-weight: normal;
+    margin-right: 15px; 
+    flex: 1;
   }
   
   .form-group input,
   .form-group select {
     width: 100%;
-    padding: 10px; /* Space inside inputs and selects */
-    border: 1px solid #ccc; /* Neutral border color */
+    padding: 10px; 
+    border: 1px solid #ccc;
     border-radius: 4px;
   }
   
   .form-group input[type="checkbox"] {
-    width: 24px; /* Larger checkbox size */
-    height: 24px; /* Larger checkbox size */
-    margin-right: 15px; /* Space between checkbox and label */
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
   }
   
   .save-button {
-    background-color: #007bff; /* Neutral blue background */
+    background-color: #007bff; 
     color: white;
     border: none;
-    padding: 12px 24px; /* Space inside the button */
-    border-radius: 4px; /* Slightly rounded corners */
+    padding: 12px 24px;
+    border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    margin-top: 20px; /* Space above the button */
+    margin-top: 20px;
   }
   
   .save-button:hover {
-    background-color: #0056b3; /* Darker blue for hover effect */
+    background-color: #0056b3; 
   }
   

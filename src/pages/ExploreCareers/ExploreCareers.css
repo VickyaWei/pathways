@@ -13,16 +13,16 @@
 .changed-career-tiles-container {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  grid-template-columns: repeat(4, 1fr); 
 }
 
 .career-general-tiles {
   margin-top: -15px;
-  grid-column: 1 / 2; /* Occupies the first column */
-  padding: 1rem; /* Space within the column */
+  grid-column: 1 / 2;
+  padding: 1rem; 
 }
 
 .career-additional-tiles {
   margin-top: 15px;
-  grid-column: 2 / 5; /* Occupies the second to fourth columns */
+  grid-column: 2 / 5; 
 }

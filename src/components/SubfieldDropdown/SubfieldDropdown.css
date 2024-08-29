@@ -1,6 +1,6 @@
 .subfield-dropdown-container {
   width: 100%;
-  max-width: 400px; /* Adjust as needed */
+  max-width: 400px; 
   margin: 0 auto;
 }
 
@@ -9,18 +9,18 @@
 }
 
 .MuiSelect-root {
-  height: 40px; /* Adjust dropdown height */
+  height: 40px; 
 }
 
 .MuiMenuItem-root {
-  font-size: 10px; /* Adjust font size */
-  height: 35px; /* Adjust height of each menu item */
+  font-size: 10px;
+  height: 35px; 
 }
 
 .MuiCheckbox-root {
-  padding: 0; /* Adjust padding for checkboxes */
+  padding: 0; 
 }
 
 .MuiListItemText-root {
-  font-size: 10px; /* Adjust font size for item text */
+  font-size: 10px; 
 }

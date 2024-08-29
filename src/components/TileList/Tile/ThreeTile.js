@@ -2,12 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons";
 import useBookmarks from "../../../hooks/useBookmarks";
-import "./Tile.css";
+import "./ThreeTile.css";
 
-const Tile = ({ id, title, description, image, url }) => {
+const ThreeTile = ({ id, title, description, image, url, isSidebarOpen }) => {
   const { bookmarkedResources, toggleBookmark } = useBookmarks();
 
-  // Determine if the item is bookmarked
   const isBookmarked = bookmarkedResources.some((item) => item.id === id);
 
   const handleBookmark = () => {
@@ -15,8 +14,8 @@ const Tile = ({ id, title, description, image, url }) => {
   };
 
   return (
-    <div className="tile">
-      <div className="tile-content">
+    <div className={`three-tile ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+      <div className="three-tile-content">
         <a href={url} target="_blank" rel="noopener noreferrer">
           <img src={image} alt={title} />
         </a>
@@ -24,12 +23,12 @@ const Tile = ({ id, title, description, image, url }) => {
         <p>{description}</p>
         <button
           onClick={handleBookmark}
-          className="bookmark-button"
-          aria-label="Bookmark"
+          className="three-bookmark-button"
+          aria-label="three-Bookmark"
         >
           <FontAwesomeIcon
             icon={isBookmarked ? faBookmarkSolid : faBookmark}
-            className={`bookmark-icon ${isBookmarked ? "blue" : "white"}`}
+            className={`three-bookmark-icon ${isBookmarked ? "blue" : "white"}`}
           />
         </button>
       </div>
@@ -37,4 +36,4 @@ const Tile = ({ id, title, description, image, url }) => {
   );
 };
 
-export default Tile;
+export default ThreeTile;

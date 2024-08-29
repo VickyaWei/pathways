@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
-import "./Footer.css"; // Link your CSS file
+import "./Footer.css"; 
 
 export const Footer = ({
   onPrevious,

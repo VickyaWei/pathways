@@ -1,18 +1,19 @@
 .bookmarks {
-    padding: 20px; /* Adjust the padding around the bookmarks section */
+    padding: 20px; 
   }
   
   .bookmark-tiles {
-    display: flex; /* Layout tiles in a horizontal line */
-    flex-wrap: wrap; /* Allow wrapping to the next line if there is not enough space */
-    gap: 20px; /* Space between tiles */
-    justify-content: flex-start; /* Align items to the start of the container */
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px;
+    justify-content: flex-start; 
   }
-  
+  .bookmark-section h2{
+    color: #084b8a;
+  }  
   .tile {
-    /* Add styles here to control the size and spacing of tiles */
-    flex: 1 1 200px; /* Allow tiles to grow and shrink, with a base width */
-    max-width: 300px; /* Maximum width for tiles */
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    flex: 1 1 200px; 
+    max-width: 300px; 
+    box-sizing: border-box; 
   }
   

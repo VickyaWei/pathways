@@ -1,36 +1,32 @@
-/* Banner.css */
-
 .banner {
   display: flex;
   align-items: center;
   padding: 20px;
   height: 20px;
-  border-radius: 12px; /* More rounded corners for a modern look */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-  overflow: hidden; /* Ensure children do not overflow the rounded corners */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .banner-text {
-  font-size: 24px; /* Larger font size for more impact */
-  margin-right: 20px; /* Space between text and image */
-  font-family: 'Roboto', sans-serif; /* Preferred font */
-  font-weight: bold; /* Bold text for emphasis */
- /* Darker shadow for better legibility */
+  font-size: 24px;
+  margin-right: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 }
 
 .highlight {
-  padding: 2px 6px; /* Slightly more padding for emphasis */
-  border-radius: 4px; /* More rounded highlight */
- 
-  font-weight: bold; /* Bold text for emphasis */
-  color: #333; /* Dark text for contrast */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .banner-icon {
-  width: 60px; /* Larger icon for visibility */
+  width: 60px;
   height: 60px;
-  margin-left: 20px; /* Space between image and text */
-  border-radius: 50%; /* Circular icon for a modern touch */
-  border: 2px solid #fff; /* White border to stand out against the background */
+  margin-left: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
 }

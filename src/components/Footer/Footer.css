@@ -6,23 +6,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px; /* Reduced padding for a smaller height */
+    padding: 5px 10px; 
     border-top: 1px solid #ccc;
     background-color: #f1f1f1;
-    z-index: 1000; /* Ensure footer is above other content */
+    z-index: 1000; 
   }
   
   .footer-container .footer-button {
     background-color: #084b8a;
     color: white;
     border: none;
-    padding: 5px 10px; /* Reduced padding for a smaller button */
+    padding: 5px 10px; 
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px; 
   }
 
   .footer-button:hover {
-    background-color: #063f6c !important; /* Darker blue on hover */
-    transition: background-color 0.3s ease !important; /* Smooth transition for hover effect */
+    background-color: #063f6c !important;
+    transition: background-color 0.3s ease !important; 
   }

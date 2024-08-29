@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import Tile from '../Tile/Tile';
 import "./ThreeTileList.css"
+import ThreeTile from '../Tile/ThreeTile';
 
-const ThreeTileList = ({ client, contentType, selected }) => {
+const ThreeTileList = ({ client, contentType }) => {
   const [tiles, setTiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -43,18 +43,14 @@ const ThreeTileList = ({ client, contentType, selected }) => {
     fetchTiles();
   }, [fetchTiles]);
 
-  const filteredTiles = selected
-    ? tiles.filter(tile => tile.data.keyword && tile.data.keyword.includes(selected))
-    : tiles;
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading tiles: {error.message}</p>;
-  if (!filteredTiles.length) return <p>No tiles available.</p>;
+  if (!tiles.length) return <p>No tiles available.</p>;
 
   return (
     <div className="three-tile-list">
-      {filteredTiles.map((tile) => (
-        <Tile
+      {tiles.map((tile) => (
+        <ThreeTile
           key={tile.id}
           id={tile.id}
           title={tile.tileTitle}

@@ -8,13 +8,17 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import "./FooterWithTimer.css"; // Import the CSS file
+import "./FooterWithTimer.css";
+import { RecommenderPage } from "../../pages/RecommenderPage/RecommenderPage";
+import { useNavigate } from "react-router-dom";
 
 const FooterWithTimer = ({ onPrevious, onNext }) => {
-  const initialTimeInSeconds = 1 * 60; // 1 minute in seconds (for testing purposes)
+  const initialTimeInSeconds = 1 * 60; 
   const [timeLeft, setTimeLeft] = useState(initialTimeInSeconds);
   const [openModal, setOpenModal] = useState(false);
   const [isNextButtonEnabled, setIsNextButtonEnabled] = useState(false);
+
+
 
   useEffect(() => {
     let interval;
@@ -23,7 +27,7 @@ const FooterWithTimer = ({ onPrevious, onNext }) => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeLeft === 0 && !openModal) {
-      setOpenModal(true); // Show the modal when the timer reaches zero
+      setOpenModal(true);
     }
 
     // Clean up the interval on component unmount
@@ -51,8 +55,9 @@ const FooterWithTimer = ({ onPrevious, onNext }) => {
 
   // Handle going to recommendations
   const handleGoToRecommendations = () => {
-    // Implement navigation to recommendations
+  
     handleCloseModal(); // Close the modal
+  
   };
 
   return (

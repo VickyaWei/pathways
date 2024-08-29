@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* IntroTiles.css */
 .mentorpal .intro-tiles-container {
-  height: 140px;
+  height: 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; 
@@ -15,29 +14,29 @@
 .mentorpal .arrow {
   display: flex;
   align-items: center;
-  font-size: 2.5em; /* Adjust size as needed */
-  color: #084b8a; /* Use a color that matches your design */
-  padding: 0 15px; /* Adjust spacing around the arrow */
-  font-weight: bold; /* Make the arrow thicker */
+  font-size: 2.0em; 
+  color: #084b8a; 
+  padding: 0 10px; 
+  font-weight: bold; 
 
 }
 
 
 .mentorpal .intro-tile-content {
-  padding: 10px 20px 20px;
+  padding: 10px 20px 10px;
   text-align: center; 
   font-family: 'Roboto';
 }
 
 .mentorpal .intro-tile {
   display: flex;
-  flex-direction: column; /* Arrange children vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
   text-align: center;
-  background-color: #fff; /* Optional: background color for tiles */
-  border-radius: 8px; /* Optional: rounded corners for tiles */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+  background-color: #fff; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   padding: 10px;
 }
 
@@ -50,18 +49,18 @@
 
 .mentorpal .intro-tile-image {
   width: auto;
-  height: 80px;
+  height: 40px;
   object-fit: cover; 
 }
 
 @media (max-width: 1024px) {
   .intro-tile {
-    flex: 1 1 calc(33.333% - 20px); /* Three tiles in a row for medium screens */
+    flex: 1 1 calc(33.333% - 20px); 
     max-width: calc(33.333% - 20px);
   }
 
   .arrow {
-    font-size: 1.5em; /* Adjust arrow size for medium screens */
+    font-size: 1.5em; 
   }
 }
 
@@ -73,11 +72,9 @@
   margin-left: 500px;
 }
 
-
-.mentor-grid {
-
+.mentorpal .mentor-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  grid-template-columns: repeat(4, 1fr); 
   flex-wrap: wrap;
   gap: 36px;
   padding: 16px;
@@ -85,17 +82,39 @@
 }
 
 
-.mentor-panels {
-  grid-column: 1 / 2; /* Occupies the first column */
-  background-color: #f0f0f0; /* Optional: background color for visual separation */
+.mentorpal .mentor-panels {
+  grid-column: 1 / 2; 
+  background-color: #f0f0f0;
   padding: 1rem;
 }
 
-.mentor-cards {
-  grid-column: 2 / 6; /* Occupies columns 2, 3, and 4 */
+.mentorpal .mentor-cards {
+  grid-column: 2 / 6; 
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
+.mentorpal.mentors-page .mentor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 16px;
+  margin-top: -50px;
+}
+
+
+.mentorpal.mentors-page .mentor-panels {
+  grid-column: 1 / 2;
+  background-color: #f0f0f0;
+  padding: 1rem;
+}
+
+.mentorpal.mentors-page .mentor-cards {
+  grid-column: 2 / 6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 

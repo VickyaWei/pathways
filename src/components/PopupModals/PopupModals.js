@@ -1,65 +1,82 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import './PopupModals.css'; // Import the CSS file
-
-// Set the root element for accessibility
-Modal.setAppElement('#root');
+import React, { useState } from "react";
+import Joyride from "react-joyride";
+import "./PopupModals.css";
 
 const PopupModals = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true); // Start with the modal open
-  const [currentStep, setCurrentStep] = useState(0);
+  const [run, setRun] = useState(true);
 
   const steps = [
     {
-      content: 'This is the personalized resource.',
-      position: { top: '32%', left: '20%' },
-      className: 'modal-step-0',
+      target: "body", 
+      content: (
+        <>
+          Welcome to the recommendations page!
+          <br />
+          Here, you can browse resources that will help you continue planning
+          your career.
+        </>
+      ),
+      placement: "center", // Centered placement
     },
     {
-      content: 'You can bookmark the resources',
-      position: { top: '85%', left: '30%' },
-      className: 'modal-step-1',
+      target: ".sidebar .top_section", // Selector for the sidebar top section
+      content: (
+        <>
+          Here, you can find the menu.
+          <br /> Click here to expand or collapse it.
+        </>
+      ),
+      placement: "bottom", // Tooltip below the sidebar top section
     },
     {
-      content: 'You can find the bookmarked resources in the sidebar.',
-      position: { top: '20%', left: '15%' },
-      className: 'modal-step-2',
+      target: ".tile .bookmark-button", 
+      content:(
+        <>
+         This is the bookmark icon.
+         <br /> You can click on it to bookmark a resource.</>
+      )
+       ,
+      placement: "right", 
     },
     {
-      content: 'This is the personalized resource.',
-      position: { top: '32%', left: '80%' },
-      className: 'modal-step-3',
+      target: ".sidebar .link:nth-child(2) .icon", 
+      content: "Click here to view your bookmarked resources.",
+      placement: "right", 
+    },
+    {
+      target: ".subhead-option", 
+      content:
+        "You can click on these tabs to browse different types of resources.",
+      placement: "bottom", 
     },
   ];
 
-  const handleNextStep = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      setModalIsOpen(false); // Close the modal when the tour is finished
-    }
-  };
-
   return (
     <div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          content: {
-            ...steps[currentStep].position, 
-            color:'white',
+      <Joyride
+        steps={steps}
+        run={run}
+        continuous={true}
+        scrollToFirstStep={true}
+        showProgress={true}
+        showSkipButton={true}
+        styles={{
+          options: {
+            arrowColor: "#084b8a",
+            backgroundColor: "#084b8a",
+            textColor: "#fff",
+            overlayColor: "rgba(0, 0, 0, 0.5)",
+            primaryColor: "#084b8a",
           },
         }}
-        className="custom-modal"
-        overlayClassName="custom-overlay"
-        contentLabel="Example Modal"
-      >
-        <h2 className='modal-content'>{steps[currentStep].content}</h2>
-        <button className="next-button" onClick={handleNextStep}>
-          {currentStep < steps.length - 1 ? 'Next' : 'Finish'}
-        </button>
-      </Modal>
+        callback={(data) => {
+          const { status } = data;
+          if (status === "finished") {
+            setRun(false);
+          }
+        }}
+        disableScrolling={true}
+      />
     </div>
   );
 };

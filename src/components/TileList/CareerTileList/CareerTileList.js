@@ -5,7 +5,7 @@ import "./CareerTileList.css";
 export const CareerTileList = ({
   client,
   contentType,
-  selectedSubfield = [], // Default to empty array if not provided
+  selectedSubfield = [], 
 }) => {
   const [tiles, setTiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ export const CareerTileList = ({
       const { id } = sys;
       const tileTitle = fields.title;
       const tileDescription = fields.description;
-      const tileImage = fields.image?.fields?.file?.url; // Optional chaining for safety
+      const tileImage = fields.image?.fields?.file?.url; 
       const imageUrl = fields.url;
       const data = fields.data || {};
 
@@ -82,6 +82,7 @@ export const CareerTileList = ({
           image={tile.tileImage}
           url={tile.imageUrl}
           data={tile.data}
+          category="resources"
         />
       ))}
     </div>

@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import SubfieldDropdown from "../../components/SubfieldDropdown/SubfieldDropdown";
 import { careerAdditionalTileClient } from "../../clients/CareerAdditionalTileClient";
 import { careerGeneralTileClient } from "../../clients/CareerGeneralTileClient";
-import TileList from "../../components/TileList/TileList/TileList";
+import FourTileList from "../../components/TileList/TileList/FourTileList";
+import { GeneralTileList } from "../../components/TileList/General/GeneralTileList";
+import { CareerTileList } from "../../components/TileList/CareerTileList/CareerTileList";
 import "./ExploreCareers.css";
 import PopupModals from "../../components/PopupModals/PopupModals";
-import { GeneralTileList } from "../../components/TileList/General/GeneralTileList";
-import { AdditionalTileList } from "../../components/TileList/Additional/AdditionalTileList";
-import FourTileList from "../../components/TileList/TileList/FourTileList";
-import { CareerTileList } from "../../components/TileList/CareerTileList/CareerTileList";
 
 const ExploreCareers = () => {
   const [selectedSubfield, setSelectedSubfield] = useState("");
@@ -28,7 +26,6 @@ const ExploreCareers = () => {
               <FourTileList
                 client={careerGeneralTileClient}
                 contentType="careerUpTiles"
-
               />
             </div>
             <div className="career-additional-tiles">

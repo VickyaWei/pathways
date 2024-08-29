@@ -46,7 +46,7 @@ const PopPages = () => {
           addition={popupsContent[currentPopup].addition}
           onNext={nextPopup}
           onPrevious={previousPopup}
-          showPrevious={currentPopup > 0} // Only show previous arrow if not on the first popup
+          showPrevious={currentPopup > 0} 
           currentPopup={currentPopup}
           totalPopups={popupsContent.length}
         />

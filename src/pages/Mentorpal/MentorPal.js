@@ -2,25 +2,22 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import { Search } from "../../components/Search/Search";
 import Keywords from "../../components/Keywords/Keywords";
-import { Card } from "../../components/Card/Card";
-import Footer from "../../components/Footer/Footer";
+import Card from "../../components/Card/Card";
 import "./MentorPal.css";
-import { data as mentors } from "../../data"; // Assuming mentors data is imported from data.js
+import { data as mentors } from "../../data"; 
 import FooterWithTimer from "../../components/Footer/FooterWithTimer";
 
-const MentorPal = () => {
+const MentorPal = ({ showExtras = true, isMentorsPage = false  }) => {
   const [query, setQuery] = useState("");
   const [filteredMentors, setFilteredMentors] = useState(mentors);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
 
-  // Handle search input change
   const handleSearchChange = (event) => {
     const newQuery = event.target.value;
     setQuery(newQuery);
     filterMentors(newQuery, selectedKeywords);
   };
 
-  // Handle keyword change
   const handleKeywordChange = (keywordId) => {
     const newSelectedKeywords = selectedKeywords.includes(keywordId)
       ? selectedKeywords.filter((id) => id !== keywordId)
@@ -29,7 +26,6 @@ const MentorPal = () => {
     filterMentors(query, newSelectedKeywords);
   };
 
-  // Filter mentors based on query and selected keywords
   const filterMentors = (query, selectedKeywords) => {
     const newFilteredMentors = mentors.filter((mentor) => {
       if (!mentor || !mentor.keywords) return false;
@@ -59,10 +55,10 @@ const MentorPal = () => {
   }, [mentors]);
 
   const mentorData = [
-    { title: "Select a mentor", image: "./images/chat.png", number: 1 },
+    { title: "Select a mentor", image: "./images/selective.png", number: 1 },
     {
       title: "Interview mentor(s)",
-      image: "./images/selective.png",
+      image: "./images/chat.png",
       number: 2,
     },
     {
@@ -71,33 +67,48 @@ const MentorPal = () => {
       number: 3,
     },
     {
-      title: "Return Users",
+      title: "Revisit for updates",
       image: "./images/returning-visitor.png",
       number: 4,
     },
   ];
 
   return (
-    <div className="mentorpal">
-      <Header />
-
-      <div className="intro-tiles-container">
-        {mentorData.map((mentor, index) => (
-          <React.Fragment key={mentor.number}>
-            <div className="intro-tile">
-              <div className="intro-tile-content">
-                <h1 className="intro-tile-title">{mentor.title}</h1>
+    <div className={`mentorpal ${isMentorsPage ? "mentors-page" : ""}`}>
+      {showExtras && <Header />}
+      {showExtras && (
+        <div className="intro-tiles-container">
+          {mentorData.map((mentor, index) => (
+            <React.Fragment key={mentor.number}>
+              <div
+                className="intro-tile"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)), url(${mentor.image})`,
+                  backgroundSize: "25%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="intro-tile-content">
+                  <h1
+                    className="intro-tile-title"
+                    style={{
+                      fontSize: "1.5em",
+                      fontWeight: "bold",
+                      color: "#084b8a",
+                      textShadow:
+                        "2px 2px 4px rgba(0, 0, 0, 0.15)",
+                    }}
+                  >
+                    {mentor.title}
+                  </h1>
+                </div>
               </div>
-              <img
-                src={mentor.image}
-                alt={mentor.title}
-                className="intro-tile-image"
-              />
-            </div>
-            {index < mentorData.length - 1 && <div className="arrow">→</div>}
-          </React.Fragment>
-        ))}
-      </div>
+              {index < mentorData.length - 1 && <div className="arrow">→</div>}
+            </React.Fragment>
+          ))}
+        </div>
+      )}
 
       <div className="search-container">
         <div className="search-input-container">
@@ -113,7 +124,7 @@ const MentorPal = () => {
 
       <div className="mentor-grid">
         <div className="mentor-panels">
-          {/* Add any content you want to display in the first column here */}
+          {/* Add any content we want to display here */}
         </div>
         <div className="mentor-cards">
           {filteredMentors.length > 0 ? (
@@ -132,7 +143,7 @@ const MentorPal = () => {
         </div>
       </div>
 
-      <FooterWithTimer />
+      {showExtras && <FooterWithTimer />}
     </div>
   );
 };

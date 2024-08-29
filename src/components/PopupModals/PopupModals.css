@@ -1,24 +1,29 @@
+/* Styling for the custom modal */
 .custom-modal {
   position: absolute;
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.6); /* 50% opacity black background */
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  background-color: rgba(0, 0, 0, 0.6); /* 60% opacity black background */
   color: white; /* Ensure text is visible on black background */
   border-radius: 10px;
   padding: 20px;
-  width: 300px;
+  width: 350px;
   box-shadow: none; /* Remove shadow to make it blend with the page */
   display: flex; /* Use flexbox to position the button */
   flex-direction: column; /* Stack content vertically */
   align-items: flex-end; /* Align items to the end (right) */
+  font-family: 'Arial', sans-serif; /* Set font to Arial */
   justify-content: flex-end; /* Align content to the bottom */
+  z-index: 9999; /* Ensure it is above other content */
 }
 
+/* Styling for the custom overlay */
 .custom-overlay {
-  background-color: transparent; /* Make the overlay transparent */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
 }
 
+/* Styling for the next button */
 .next-button {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -26,38 +31,26 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px; /* Space from the content */
+  margin-top: 10px; /* Space from the content */
 }
 
 .next-button:hover {
   background-color: black;
 }
 
+/* Styling for modal content text */
 .modal-content {
-  color: aliceblue;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px; /* Adjust the font size */
+  font-weight: bold; /* Adjust the font weight */
+  color: white;
+  line-height: 1.6;
+  position: relative; /* Needed for positioning the triangle */
 }
 
-.modal-step-0::before {
-  content: "";
-  position: absolute;
-  border-width: 0 10px 10px 10px; /* Triangle pointing upwards */
-  border-style: solid;
-  border-color: transparent transparent #000000 transparent; /* Triangle color */
-  top: -10px; /* Position the triangle above the modal */
-  left: 20px; /* Position it horizontally, adjust as needed */
-}
-
-.modal-step-1::before {
-  content: "";
-  position: absolute;
-  border-width: 0 10px 10px 10px; /* Triangle pointing upwards */
-  border-style: solid;
-  border-color: transparent transparent #000000 transparent; /* Triangle color */
-  top: -10px; /* Position the triangle above the modal */
-  left: 30px; /* Position it horizontally, adjust as needed */
-}
-
-/* Adjust the position for modal-step-2 if needed */
+/* Styling for the step indicators */
+.modal-step-0::before,
+.modal-step-1::before,
 .modal-step-2::before {
   content: "";
   position: absolute;
@@ -65,5 +58,17 @@
   border-style: solid;
   border-color: transparent transparent #000000 transparent; /* Triangle color */
   top: -10px; /* Position the triangle above the modal */
+}
+
+/* Specific positioning for each step triangle */
+.modal-step-0::before {
+  left: 20px; /* Position it horizontally, adjust as needed */
+}
+
+.modal-step-1::before {
+  left: 30px; /* Position it horizontally, adjust as needed */
+}
+
+.modal-step-2::before {
   left: 70px; /* Position it horizontally, adjust as needed */
 }
