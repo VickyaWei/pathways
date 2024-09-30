@@ -1,58 +1,40 @@
 import React, { useState } from "react";
 import SubfieldDropdown from "../../components/SubfieldDropdown/SubfieldDropdown";
-import { careerAdditionalTileClient } from "../../clients/CareerAdditionalTileClient";
-import { careerGeneralTileClient } from "../../clients/CareerGeneralTileClient";
-import FourTileList from "../../components/TileList/TileList/FourTileList";
-import { GeneralTileList } from "../../components/TileList/General/GeneralTileList";
-import { CareerTileList } from "../../components/TileList/CareerTileList/CareerTileList";
+import ResourceTile from "../../components/ResourceTiles/ResourceTiles";
+
 import "./ExploreCareers.css";
-import PopupModals from "../../components/PopupModals/PopupModals";
 
 const ExploreCareers = () => {
-  const [selectedSubfield, setSelectedSubfield] = useState("");
+  const [selectedSubfield, setSelectedSubfield] = useState([]);
+  const [changed, setChanged] = useState(false);
 
-  const handleSubfieldChange = (subfield) => {
-    setSelectedSubfield(subfield);
+
+  const handleSubfieldChange = (subfields) => {
+    setSelectedSubfield(subfields);
+    setChanged(true);
   };
 
   return (
     <div className="explore-careers">
-      <PopupModals />
-      <SubfieldDropdown onSubfieldChange={handleSubfieldChange} className="subfield-dropdown" />
-      <div className={selectedSubfield ? "changed-career-tiles-container" : "started-career-tiles"}>
-        {!selectedSubfield ? (
-          <>
-            <div className="career-general-tile">
-              <FourTileList
-                client={careerGeneralTileClient}
-                contentType="careerUpTiles"
-              />
-            </div>
-            <div className="career-additional-tiles">
-              <FourTileList
-                client={careerAdditionalTileClient}
-                contentType="careerDownTiles"
-                selectedSubfield={selectedSubfield}
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="career-general-tiles">
-              <GeneralTileList 
-                client={careerGeneralTileClient}
-                contentType="careerUpTiles"
-              />
-            </div>
-            <div className="career-additional-tiles">
-              <CareerTileList 
-                client={careerAdditionalTileClient}
-                contentType="careerDownTiles"
-                selectedSubfield={selectedSubfield}
-              />
-            </div>
-          </>
-        )}
+      <SubfieldDropdown
+        onSubfieldChange={handleSubfieldChange}
+        className="subfield-dropdown"
+      />
+      <div className={changed ? "change-container" : "start-container"}>
+        <div className="general-tiles">
+          <ResourceTile
+            tagFilter="Career General Resources"
+            className="career-general-tile"
+          />
+        </div>
+        <br />
+        <div className="additional-tiles">
+          <ResourceTile
+            tagFilter="Career Additional Resources"
+            selectedSubfield={selectedSubfield}
+            className="career-additional-tile"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,74 +1,80 @@
-/* Styling for the custom modal */
-.custom-modal {
-  position: absolute;
-  right: 50%;
-  bottom: 50%;
-  transform: translate(50%, 50%);
-  background-color: rgba(0, 0, 0, 0.6); /* 60% opacity black background */
-  color: white; /* Ensure text is visible on black background */
-  border-radius: 10px;
+/* PopupModals.css */
+
+.joyride-tooltip {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 350px;
-  box-shadow: none; /* Remove shadow to make it blend with the page */
-  display: flex; /* Use flexbox to position the button */
-  flex-direction: column; /* Stack content vertically */
-  align-items: flex-end; /* Align items to the end (right) */
-  font-family: 'Arial', sans-serif; /* Set font to Arial */
-  justify-content: flex-end; /* Align content to the bottom */
-  z-index: 9999; /* Ensure it is above other content */
+  max-width: 350px;
+  color: #fff;
 }
 
-/* Styling for the custom overlay */
-.custom-overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+
+.joyride-tooltip__arrow {
+  border-color: #084b8a;
 }
 
-/* Styling for the next button */
-.next-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+
+.joyride-tooltip__body {
+  background-color: #084b8a;
+}
+
+
+.joyride-tooltip__content {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+.joyride-tooltip__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.joyride-tooltip__button--primary {
+  background-color: #fff;
+  color: #084b8a;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px; /* Space from the content */
+  transition: background-color 0.3s ease;
 }
 
-.next-button:hover {
-  background-color: black;
+.joyride-tooltip__button--primary:hover {
+  background-color: #e6e6e6;
 }
 
-/* Styling for modal content text */
-.modal-content {
-  font-family: 'Arial', sans-serif;
-  font-size: 18px; /* Adjust the font size */
-  font-weight: bold; /* Adjust the font weight */
-  color: white;
-  line-height: 1.6;
-  position: relative; /* Needed for positioning the triangle */
+.joyride-tooltip__button--skip {
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-/* Styling for the step indicators */
-.modal-step-0::before,
-.modal-step-1::before,
-.modal-step-2::before {
-  content: "";
-  position: absolute;
-  border-width: 0 10px 10px 10px; /* Triangle pointing upwards */
-  border-style: solid;
-  border-color: transparent transparent #000000 transparent; /* Triangle color */
-  top: -10px; /* Position the triangle above the modal */
+.joyride-tooltip__button--skip:hover {
+  color: #cce4ff;
 }
 
-/* Specific positioning for each step triangle */
-.modal-step-0::before {
-  left: 20px; /* Position it horizontally, adjust as needed */
+
+.joyride-overlay {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-step-1::before {
-  left: 30px; /* Position it horizontally, adjust as needed */
-}
 
-.modal-step-2::before {
-  left: 70px; /* Position it horizontally, adjust as needed */
+@media (max-width: 480px) {
+  .joyride-tooltip {
+    max-width: 90%;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .joyride-tooltip__button--primary {
+    padding: 6px 12px;
+  }
 }

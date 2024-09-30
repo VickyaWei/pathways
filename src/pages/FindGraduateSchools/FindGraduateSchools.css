@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px;
+    padding: 10px;
   }
   
  .dropdown-list {
@@ -11,24 +11,25 @@
     margin-bottom: 20px; 
   }
  
-  .started-degree-tiles {
-    margin-top: -10px;
+  .start-container {
+    display: flex;
     flex-direction: column;
   }
-  
-  .changed-degree-tiles-container {
-    margin-top: -10px;
+  .change-container {
     display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  
+  .change-container .general-tiles {
+    grid-column: 1 / 2;
+  }
+  
+  .change-container .additional-tiles {
+    grid-column: 2 / 5; 
     grid-template-columns: repeat(4, 1fr);
   }
   
-  .degree-general-tiles {
-    margin-top: 0px;
-    grid-column: 1 / 2; 
-    padding: 1rem; 
-  }
-  
-  .degree-additional-tiles {
-    grid-column: 2 / 4;
+  .change-container .resource-tile-container {
+    grid-template-columns: repeat(3, 1fr);
   }
   

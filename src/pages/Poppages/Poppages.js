@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Popups from '../Popups/Popups';
 
 const PopPages = () => {
   const [currentPopup, setCurrentPopup] = useState(0);
+  const navigate = useNavigate();
 
   const nextPopup = () => {
     setCurrentPopup((prev) => prev + 1);
@@ -10,6 +12,10 @@ const PopPages = () => {
 
   const previousPopup = () => {
     setCurrentPopup((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleFinal = () => {
+    navigate('/mentorpal'); // Redirect to MentorPal page
   };
 
   const popupsContent = [
@@ -33,6 +39,7 @@ const PopPages = () => {
       image: './images/mentorpal_intro.jpg' 
     },
   ];
+  
 
   return (
     <div className="PopPages">
@@ -49,6 +56,7 @@ const PopPages = () => {
           showPrevious={currentPopup > 0} 
           currentPopup={currentPopup}
           totalPopups={popupsContent.length}
+          onFinal={handleFinal}
         />
       )}
     </div>

@@ -3,26 +3,28 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  margin-top: -5px;
+  margin-top: 0px;
 }
 
-.started-career-tiles {
-  margin-top: 20px;
+.start-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.changed-career-tiles-container {
-  margin-top: 20px;
+.change-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: 1fr 3fr;
 }
 
-.career-general-tiles {
-  margin-top: -15px;
+.change-container .general-tiles {
   grid-column: 1 / 2;
-  padding: 1rem; 
 }
 
-.career-additional-tiles {
-  margin-top: 15px;
+.change-container .additional-tiles {
   grid-column: 2 / 5; 
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.change-container .resource-tile-container {
+  grid-template-columns: repeat(3, 1fr);
 }

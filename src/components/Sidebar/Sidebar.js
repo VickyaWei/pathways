@@ -11,15 +11,19 @@ import {
 import "./Sidebar.css";
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   const menuItem = [
-    { path: "/", name: "Home", icon: <FaTh /> },
-    { path: "/bookmarks", name: "Bookmarks", icon: <FaBookmark /> },
-    { path: "/mentors", name: "Mentors", icon: <FaUserTie /> },
-    { path: "/settings", name: "Settings", icon: <FaCogs /> },
-    { path: "/logout", name: "Logout", icon: <FaSignOutAlt /> },
+    { path: "/recommenderpage", name: "Home", icon: <FaTh /> },
+    {
+      path: "/recommenderpage/bookmarks",
+      name: "Bookmarks",
+      icon: <FaBookmark />,
+    },
+    { path: "/recommenderpage/mentors", name: "Mentors", icon: <FaUserTie /> },
+    { path: "/recommenderpage/settings", name: "Settings", icon: <FaCogs /> },
+    { path: "/recommenderpage/logout", name: "Logout", icon: <FaSignOutAlt /> },
   ];
 
   return (
@@ -30,7 +34,11 @@ const Sidebar = ({ children }) => {
             Logo
           </h1>
           <div className="bars" style={{ marginLeft: isOpen ? "65px" : "0px" }}>
-            <FaBars onClick={toggle} style={{ fontSize: "24px" }} />
+            <FaBars
+              className="fa-bars-icon"
+              onClick={toggle}
+              style={{ fontSize: "24px" }}
+            />
           </div>
         </div>
         {menuItem.map((item, index) => (

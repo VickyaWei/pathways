@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 5px 15px;
   border-top: 1px solid #ccc;
@@ -13,7 +13,13 @@
   z-index: 1000;
 }
 
+.footer-timer {
+  flex: 1; 
+  text-align: center; 
+}
+
 .footer-timer-button {
+  justify-self: flex-end;
   background-color: #084b8a !important;
   color: white !important; 
   border: none;

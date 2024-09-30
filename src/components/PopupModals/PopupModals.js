@@ -7,7 +7,7 @@ const PopupModals = () => {
 
   const steps = [
     {
-      target: "body", 
+      target: "body" ,
       content: (
         <>
           Welcome to the recommendations page!
@@ -19,7 +19,7 @@ const PopupModals = () => {
       placement: "center", // Centered placement
     },
     {
-      target: ".sidebar .top_section", // Selector for the sidebar top section
+      target: ".sidebar .fa-bars-icon", // Selector for the sidebar top section
       content: (
         <>
           Here, you can find the menu.
@@ -39,16 +39,17 @@ const PopupModals = () => {
       placement: "right", 
     },
     {
-      target: ".sidebar .link:nth-child(2) .icon", 
+      target: ".sidebar .link:nth-child(3) .icon", 
       content: "Click here to view your bookmarked resources.",
       placement: "right", 
     },
     {
-      target: ".subhead-option", 
+      target: ".subhead-container", 
       content:
         "You can click on these tabs to browse different types of resources.",
       placement: "bottom", 
     },
+
   ];
 
   return (

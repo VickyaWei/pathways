@@ -1,31 +1,42 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faBookmark as faBookmarkSolid } from "@fortawesome/free-solid-svg-icons";
-import useBookmarks from "../../../hooks/useBookmarks";
+import useBookmarks from "../../hooks/useBookmarks";
 import "./Tile.css";
 
-const Tile = ({ id, title, description, image, url }) => {
+const Tile = ({ id, title, description, thumbnail, url, isResearchPage }) => {
   const { bookmarkedResources, toggleBookmark } = useBookmarks();
 
-  // Determine if the item is bookmarked
   const isBookmarked = bookmarkedResources.some((item) => item.id === id);
 
   const handleBookmark = () => {
-    toggleBookmark({ id, title, description, image, url }, 'resource');
+    toggleBookmark({ id, title, description, thumbnail, url }, 'resource');
+  };
+
+
+  const renderDescription = () => {
+    if (typeof description === 'string') {
+      return <p>{description}</p>;
+    } else if (description && description.content) {
+      return description.content.map((item, index) => (
+        <p key={index}>{item.content[0].value}</p>
+      ));
+    } else {
+      return <p>No description available</p>;
+    }
   };
 
   return (
-    <div className="tile">
+    <div className={`tile ${isResearchPage ? "research-page-tile" : ""}`}>
       <div className="tile-content">
         <a href={url} target="_blank" rel="noopener noreferrer">
-          <img src={image} alt={title} />
+          <img src={thumbnail} alt={title} className="tile-thumbnail" />
         </a>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 className="tile-title">{title}</h3>
+        {renderDescription()}
         <button
           onClick={handleBookmark}
           className="bookmark-button"
-          aria-label="Bookmark"
         >
           <FontAwesomeIcon
             icon={isBookmarked ? faBookmarkSolid : faBookmark}

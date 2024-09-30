@@ -14,6 +14,7 @@ const Popups = ({
   showPrevious,
   currentPopup,
   totalPopups,
+  onFinal
 }) => {
   return (
     <div className="popupBackground">
@@ -47,7 +48,7 @@ const Popups = ({
           <FaArrowLeft className="arrowButton left" onClick={onPrevious} />
         )}
         {currentPopup === totalPopups - 1 ? (
-          <button className="letGoButton" onClick={onNext}>
+          <button className="letGoButton" onClick={onFinal}> {/* Use onFinal for the button */}
             Let's go
           </button>
         ) : (

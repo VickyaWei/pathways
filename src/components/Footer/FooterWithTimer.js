@@ -8,69 +8,78 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import "./FooterWithTimer.css";
-import { RecommenderPage } from "../../pages/RecommenderPage/RecommenderPage";
 import { useNavigate } from "react-router-dom";
+import "./FooterWithTimer.css";
 
 const FooterWithTimer = ({ onPrevious, onNext }) => {
-  const initialTimeInSeconds = 1 * 60; 
-  const [timeLeft, setTimeLeft] = useState(initialTimeInSeconds);
+  const initialTimeInSeconds = 1 * 20;
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const savedTime = localStorage.getItem("timeLeft");
+    return savedTime ? parseInt(savedTime, 10) : initialTimeInSeconds;
+  });
   const [openModal, setOpenModal] = useState(false);
   const [isNextButtonEnabled, setIsNextButtonEnabled] = useState(false);
-
-
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     let interval;
     if (timeLeft > 0) {
       interval = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
+        setTimeLeft((prevTime) => {
+          const newTime = prevTime - 1;
+          localStorage.setItem("timeLeft", newTime); // Save timeLeft to local storage
+          return newTime;
+        });
       }, 1000);
     } else if (timeLeft === 0 && !openModal) {
       setOpenModal(true);
     }
 
-    // Clean up the interval on component unmount
     return () => clearInterval(interval);
   }, [timeLeft, openModal]);
 
-  // Convert seconds into minutes and seconds
+  useEffect(() => {
+    // Clear the timer when the component unmounts
+    return () => {
+      localStorage.removeItem("timeLeft");
+    };
+  }, []);
+
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  // Handle modal close
   const handleCloseModal = () => {
     setOpenModal(false);
   };
 
-  // Handle snooze
   const handleSnooze = () => {
     setTimeLeft(5 * 60); // Set timer to 5 minutes (300 seconds)
     setIsNextButtonEnabled(true); // Enable the "Next" button
     handleCloseModal(); // Close the modal
   };
 
-  // Handle going to recommendations
   const handleGoToRecommendations = () => {
-  
     handleCloseModal(); // Close the modal
-  
+    navigate("/transition"); // Redirect to transition page
   };
 
   return (
     <Box className="footer-with-timer-container">
-      <Button className="footer-timer-button" onClick={onPrevious}>
-        Previous
-      </Button>
-      <Typography className="footer-timer">
-        Time Left: {formatTime(timeLeft)}
-      </Typography>
+      {timeLeft > 0 && (
+        <Typography className="footer-timer">
+          Time Left: {formatTime(timeLeft)}
+        </Typography>
+      )}
       <Button
         className="footer-timer-button"
-        onClick={onNext}
+        onClick={() => {
+          if (isNextButtonEnabled) {
+            navigate("/transition"); // Redirect to transition page
+          }
+        }}
         disabled={!isNextButtonEnabled} // Disable button based on timer
       >
         Next
@@ -83,7 +92,7 @@ const FooterWithTimer = ({ onPrevious, onNext }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">Time's Up!</DialogTitle>
         <DialogContent>
           <Typography>
             You've now spent 30 minutes talking with mentors. Would you like to

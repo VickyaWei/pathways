@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import DegreeDropdown from "../../components/DegreeDropdown/DegreeDropdown";
 import SubfieldDropdown from "../../components/SubfieldDropdown/SubfieldDropdown";
-import { degreeAdditionalTileClient } from "../../clients/DegreeAdditionalTileClient";
-import { degreeGeneralTileClient } from "../../clients/DegreeGeneralTileClient";
-import TileList from "../../components/TileList/TileList/TileList";
-import { GeneralTileList } from "../../components/TileList/General/GeneralTileList";
-import { AdditionalTileList } from "../../components/TileList/Additional/AdditionalTileList";
 
 import "./FindGraduateSchools.css";
-import ThreeTileList from "../../components/TileList/TileList/ThreeTileList";
-import FourTileList from "../../components/TileList/TileList/FourTileList";
+import ResourceTile from "../../components/ResourceTiles/ResourceTiles";
 
 const FindGraduateSchools = () => {
   const [selectedSubfield, setSelectedSubfield] = useState("");
   const [selectedDegree, setSelectedDegree] = useState("");
+  const [changed, setChanged] = useState(false);
 
   const handleSubfieldChange = (subfield) => {
     setSelectedSubfield(subfield);
+    setChanged(true);
   };
 
   const handleDegreeChange = (degree) => {
     setSelectedDegree(degree);
+    setChanged(true);
   };
   return (
     <div className="Find-Graduate-Schools">
@@ -35,46 +32,19 @@ const FindGraduateSchools = () => {
         />
       </div>
 
-      <div
-        className={
-          selectedDegree || selectedSubfield
-            ? "changed-degree-tiles-container"
-            : "started-degree-tiles"
-        }
-      >
-        {!selectedDegree && !selectedSubfield ? (
-          <>
-            <div className="degree-general-tiles">
-              <FourTileList
-                client={degreeGeneralTileClient}
-                contentType="degreeGeneralResources"
-              />
-            </div>
-            <div className="degree-additional-tiles">
-              <FourTileList
-                client={degreeAdditionalTileClient}
-                contentType="degreeAdditionalResources"
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="degree-general-tiles">
-              <GeneralTileList
-                client={degreeGeneralTileClient}
-                contentType="degreeGeneralResources"
-              />
-            </div>
-            <div className="degree-additional-tiles">
-              <AdditionalTileList
-                client={degreeAdditionalTileClient}
-                contentType="degreeAdditionalResources"
-                selectedSubfield={selectedSubfield}
-                selectedDegree={selectedDegree}
-              />
-            </div>
-          </>
-        )}
+      <div className={changed ? "change-container" : "start-container"}>
+        <div className="general-tiles">
+          <ResourceTile tagFilter="Degree General Resources" className="degree-general-tile" />
+        </div>
+        <br />
+        <div className="additional-tiles">
+          <ResourceTile
+            tagFilter="Degree Additional Resources"
+            selectedSubfield={selectedSubfield}
+            selectedDegree={selectedDegree}
+            className="degree-additional-tile"
+          />
+        </div>
       </div>
     </div>
   );

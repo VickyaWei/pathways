@@ -1,35 +1,42 @@
 .subhead-container {
-  background-color: white;
-  width:100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0px 0px;
-  border-bottom: 2px solid #ddd;
+  width: 100%;
+  background-color: #1e4b8d; /* Dark blue background for the container */
+  padding: 0;
+  margin: 0;
+  align-items: flex-end;
+  height: 50px; /* Fixed height for tabs */
+  border-bottom: 2px solid #004080; /* Darker blue border for more definition */
 }
 
 .subhead-option {
-  text-decoration: none; 
-  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  color: #fff; /* White text color for tabs */
+  text-decoration: none;
+  padding: 12px 20px; /* Increased padding for better click area */
   font-size: 16px;
-  font-family: "Roboto", sans-serif; 
-  color: #555;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border: 1px solid transparent;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  white-space: nowrap;
-  display: inline-block;
+  font-weight: bold; /* Bold text for better visibility */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+  margin-right: 4px; /* Slightly increased margin for separation */
+  background-color: #6c757d; /* Medium gray background for inactive tabs */
+  position: relative; /* Positioning context for pseudo-elements */
 }
 
 .subhead-option:hover {
-  background-color: #f0f0f0; 
+  background-color: #b3b3b4; /* Darker gray background on hover */
+  cursor: pointer; /* Pointer cursor to indicate clickability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect to indicate elevation */
 }
 
 .subhead-option.active {
-  font-weight: bold;
-  color: #007bff; 
-  background-color: #e6f0ff; 
-  border: 1px solid #ddd;
-  border-bottom: 2px solid white;
+  background-color: #ffffff; /* White background for the active tab */
+  color: #003366; /* Dark blue text for active tab */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow for active tab */
+}
+
+.main-container {
+  background-color: #ffffff; /* Ensure main content background is white */
+  padding-top: 20px;
+  margin-top: -50px; /* Aligns the content properly with the tab bar */
 }

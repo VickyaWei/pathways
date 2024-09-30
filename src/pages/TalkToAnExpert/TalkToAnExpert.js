@@ -1,11 +1,11 @@
-
-import React from 'react';
-import ThreeTileList from '../../components/TileList/TileList/ThreeTileList';
-import { TalkToAnExpertClient } from '../../clients/TalkToAnExpertClient';
+import React from "react";
+import ResourceTile from "../../components/ResourceTiles/ResourceTiles";
 
 const TalkToAnExpert = () => {
   return (
-    <ThreeTileList client={TalkToAnExpertClient} contentType="talkToAnExpert" />
+    <div className="talk-to-an-expert">
+      <ResourceTile tagFilter="Talk to an Expert" />
+    </div>
   );
 };
 

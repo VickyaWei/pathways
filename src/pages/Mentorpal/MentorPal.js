@@ -1,66 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../components/Header/Header";
 import { Search } from "../../components/Search/Search";
 import Keywords from "../../components/Keywords/Keywords";
-import Card from "../../components/Card/Card";
+import Card from "../../components/Cards/Card";
 import "./MentorPal.css";
-import { data as mentors } from "../../data"; 
+import { data as mentors } from "../../data";
+import { panels as mentorPanels } from "../../panels";
 import FooterWithTimer from "../../components/Footer/FooterWithTimer";
+import Footer from "../../components/Footer/Footer";
+import PanelCard from "../../components/Cards/PanelCard";
 
-const MentorPal = ({ showExtras = true, isMentorsPage = false  }) => {
+const MentorPal = ({
+  showExtras = true,
+  isMentorsPage = false,
+  isResearchParticipant = true,
+  isSidebarOpen,
+}) => {
   const [query, setQuery] = useState("");
-  const [filteredMentors, setFilteredMentors] = useState(mentors);
+  const [filteredMentors, setFilteredMentors] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
 
+
+  const filterMentors = useCallback(
+    (query, selectedKeywords) => {
+      const newFilteredMentors = mentors.filter((mentor) => {
+        if (!mentor || !mentor.keywords) return false;
+
+        const matchesName = mentor.name
+          .toLowerCase()
+          .includes(query.toLowerCase());
+        const matchesTitle = mentor.title
+          .toLowerCase()
+          .includes(query.toLowerCase());
+        const matchesKeywords =
+          selectedKeywords.length === 0 ||
+          selectedKeywords.some((keywordId) =>
+            mentor.keywords
+              .map((keyword) => keyword.toLowerCase())
+              .includes(keywordId.toLowerCase())
+          );
+
+        return (matchesName || matchesTitle) && matchesKeywords;
+      });
+
+      setFilteredMentors(newFilteredMentors);
+    },
+  );
+
+  useEffect(() => {
+    filterMentors(query, selectedKeywords);
+  }, [query, selectedKeywords, filterMentors]);
+
   const handleSearchChange = (event) => {
-    const newQuery = event.target.value;
-    setQuery(newQuery);
-    filterMentors(newQuery, selectedKeywords);
+    setQuery(event.target.value);
   };
 
   const handleKeywordChange = (keywordId) => {
-    const newSelectedKeywords = selectedKeywords.includes(keywordId)
-      ? selectedKeywords.filter((id) => id !== keywordId)
-      : [...selectedKeywords, keywordId];
-    setSelectedKeywords(newSelectedKeywords);
-    filterMentors(query, newSelectedKeywords);
-  };
-
-  const filterMentors = (query, selectedKeywords) => {
-    const newFilteredMentors = mentors.filter((mentor) => {
-      if (!mentor || !mentor.keywords) return false;
-
-      const matchesName = mentor.name
-        .toLowerCase()
-        .includes(query.toLowerCase());
-      const matchesTitle = mentor.title
-        .toLowerCase()
-        .includes(query.toLowerCase());
-      const matchesKeywords =
-        selectedKeywords.length === 0 ||
-        selectedKeywords.some((keywordId) =>
-          mentor.keywords
-            .map((keyword) => keyword.toLowerCase())
-            .includes(keywordId.toLowerCase())
-        );
-
-      return (matchesName || matchesTitle) && matchesKeywords;
+    setSelectedKeywords((prevSelectedKeywords) => {
+      const newSelectedKeywords = prevSelectedKeywords.includes(keywordId)
+        ? prevSelectedKeywords.filter((id) => id !== keywordId)
+        : [...prevSelectedKeywords, keywordId];
+      return newSelectedKeywords;
     });
-
-    setFilteredMentors(newFilteredMentors);
   };
 
-  useEffect(() => {
-    setFilteredMentors(mentors);
-  }, [mentors]);
 
   const mentorData = [
     { title: "Select a mentor", image: "./images/selective.png", number: 1 },
-    {
-      title: "Interview mentor(s)",
-      image: "./images/chat.png",
-      number: 2,
-    },
+    { title: "Interview mentor(s)", image: "./images/chat.png", number: 2 },
     {
       title: "Get personalized resources",
       image: "./images/human-resources.png",
@@ -96,8 +103,7 @@ const MentorPal = ({ showExtras = true, isMentorsPage = false  }) => {
                       fontSize: "1.5em",
                       fontWeight: "bold",
                       color: "#084b8a",
-                      textShadow:
-                        "2px 2px 4px rgba(0, 0, 0, 0.15)",
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.15)",
                     }}
                   >
                     {mentor.title}
@@ -110,11 +116,11 @@ const MentorPal = ({ showExtras = true, isMentorsPage = false  }) => {
         </div>
       )}
 
-      <div className="search-container">
-        <div className="search-input-container">
+      <div className="mentor-search-container">
+        <div className="mentor-search">
           <Search query={query} handleSearchChange={handleSearchChange} />
         </div>
-        <div className="keywords-search-container">
+        <div className="mentor-keywords">
           <Keywords
             selectedKeywords={selectedKeywords}
             handleCheckboxChange={handleKeywordChange}
@@ -124,26 +130,35 @@ const MentorPal = ({ showExtras = true, isMentorsPage = false  }) => {
 
       <div className="mentor-grid">
         <div className="mentor-panels">
-          {/* Add any content we want to display here */}
+          {mentorPanels.map((card) => (
+            <PanelCard 
+                id={card._id}
+                title={card.title}
+                subtitle={card.subtitle}
+                mentors={card.mentors}
+                url={card.url}
+                isMentorsPage={isMentorsPage}
+                isSidebarOpen={isSidebarOpen}
+            />
+          ))}
         </div>
         <div className="mentor-cards">
-          {filteredMentors.length > 0 ? (
-            filteredMentors.map((mentor) => (
-              <Card
-                key={mentor._id}
-                img={mentor.img}
-                title={mentor.name}
-                subtitle={mentor.title}
-                url={mentor.mentorUrl}
-              />
-            ))
-          ) : (
-            <p>No mentors found.</p>
-          )}
+          {filteredMentors.map((mentor) => (
+            <Card
+              key={mentor._id.$oid}
+              id={mentor._id.$oid}
+              title={mentor.name}
+              subtitle={mentor.title}
+              thumbnail={mentor.thumbnail}
+              url={mentor.mentorUrl}
+              isMentorsPage={isMentorsPage}
+              isSidebarOpen={isSidebarOpen}
+            />
+          ))}
         </div>
       </div>
 
-      {showExtras && <FooterWithTimer />}
+      {showExtras && (isResearchParticipant ? <FooterWithTimer /> : <Footer />)}
     </div>
   );
 };

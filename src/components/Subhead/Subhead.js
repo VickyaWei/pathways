@@ -9,41 +9,41 @@ const Subhead = () => {
   return (
     <div className="subhead-container">
       <Link
-        to="/get-research-experience"
+        to="/recommenderpage/get-research-experience"
         className={`subhead-option ${
-          currentPath === "/get-research-experience" ? "active" : ""
+          currentPath === "/recommenderpage/get-research-experience" ? "active" : ""
         }`}
       >
         Get Research Experience
       </Link>
       <Link
-        to="/explore-careers"
+        to="/recommenderpage/explore-careers"
         className={`subhead-option ${
-          currentPath === "/explore-careers" ? "active" : ""
+          currentPath === "/recommenderpage/explore-careers" ? "active" : ""
         }`}
       >
         Explore Careers
       </Link>
       <Link
-        to="/find-graduate-schools"
+        to="/recommenderpage/find-graduate-schools"
         className={`subhead-option ${
-          currentPath === "/find-graduate-schools" ? "active" : ""
+          currentPath === "/recommenderpage/find-graduate-schools" ? "active" : ""
         }`}
       >
         Find Graduate Schools
       </Link>
       <Link
-        to="/talk-to-an-expert"
+        to="/recommenderpage/talk-to-an-expert"
         className={`subhead-option ${
-          currentPath === "/talk-to-an-expert" ? "active" : ""
+          currentPath === "/recommenderpage/talk-to-an-expert" ? "active" : ""
         }`}
       >
         Talk to an Expert
       </Link>
       <Link
-        to="/find-internships"
+        to="/recommenderpage/find-internships"
         className={`subhead-option ${
-          currentPath === "/find-internships" ? "active" : ""
+          currentPath === "/recommenderpage/find-internships" ? "active" : ""
         }`}
       >
         Find Internships

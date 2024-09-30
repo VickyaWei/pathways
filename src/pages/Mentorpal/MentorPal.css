@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+
 .mentorpal .intro-tiles-container {
   height: 100px;
   display: flex;
@@ -20,7 +21,6 @@
   font-weight: bold; 
 
 }
-
 
 .mentorpal .intro-tile-content {
   padding: 10px 20px 10px;
@@ -64,35 +64,35 @@
   }
 }
 
-.mentorpal .search-container {
+.mentor-search-container {
   display: flex;
+  gap: 20px;
+  justify-self: center;
   align-items: center;
-  padding: 0rem;
-  margin-bottom: 35px;
+  margin-bottom: 20px;  
+  margin-top: 10px;
   margin-left: 500px;
 }
 
+
 .mentorpal .mentor-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  flex-wrap: wrap;
-  gap: 36px;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
   padding: 16px;
-  margin-top: -50px;
+  margin-top: -30px;
 }
 
-
 .mentorpal .mentor-panels {
-  grid-column: 1 / 2; 
-  background-color: #f0f0f0;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .mentorpal .mentor-cards {
-  grid-column: 2 / 6; 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .mentorpal.mentors-page .mentor-grid {
@@ -104,17 +104,13 @@
   margin-top: -50px;
 }
 
-
 .mentorpal.mentors-page .mentor-panels {
   grid-column: 1 / 2;
-  background-color: #f0f0f0;
-  padding: 1rem;
 }
 
 .mentorpal.mentors-page .mentor-cards {
   grid-column: 2 / 6;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 

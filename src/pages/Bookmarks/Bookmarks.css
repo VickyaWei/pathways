@@ -11,9 +11,8 @@
   .bookmark-section h2{
     color: #084b8a;
   }  
-  .tile {
-    flex: 1 1 200px; 
-    max-width: 300px; 
-    box-sizing: border-box; 
+
+  .mentor-bookmark-tiles{
+    display: flex;
+    margin-left: -10px;;
   }
-  

@@ -1,12 +1,13 @@
 .tile {
   position: relative;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px; 
+  width: 310px;
   height: 360px;
 }
 
@@ -15,27 +16,26 @@
   flex-direction: column;
   position: relative;
   padding: 20px;
-  text-align: left; 
+  text-align: left;
 }
-
 
 .tile h3 {
   margin: 15px 0 10px;
   font-size: 1.2em;
-  color: #333; /* Dark text color */
+  color: #333;
 }
 
 .tile p {
   font-size: 1em;
-  color: #666; 
+  color: #666;
 }
 
 .tile img {
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   width: 100%;
   height: 140px;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .tile:hover {
@@ -48,13 +48,12 @@
   border: none;
   cursor: pointer;
   padding: 10px;
-  position:absolute;
-  top: 280px; 
-  right: 10px; 
+  position: absolute;
+  top: 280px;
+  right: 10px;
   font-size: 24px;
-  z-index: 2;  
+  z-index: 2;
 }
-
 
 .bookmark-icon.white {
   color: #ccc;
@@ -63,3 +62,11 @@
 .bookmark-icon.blue {
   color: #084b8a;
 }
+
+
+
+/* .tile.research-page-tile {
+  width: 500px;
+  height: 360px; 
+} */
+

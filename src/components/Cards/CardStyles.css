@@ -1,0 +1,105 @@
+.card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  width: 280px;
+  height: 260px;
+  margin: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 12px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.card-link {
+  display: block;
+  margin: 0 auto 16px auto; 
+  width: 50%; 
+  height: 180px;
+}
+
+.panel-card-link {
+  display: block;
+  width: 50%;
+  height: 180px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.card-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.panel-card-thumbnail-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.panel-card-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+}
+
+
+.card-subtitle {
+  font-size: 1.0rem;
+  color: #666;
+  text-align: center;
+  margin: 12px 0 0 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-bookmark-button {
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.card-bookmark-icon.blue {
+  color: #084b8a;
+}
+
+.card-bookmark-icon.white {
+  color: #ccc;
+}
+
+
+.card.card-mentors-page.sidebar-closed-card {
+  width: 250px !important;
+
+}
+
+.card.card-mentors-page {
+  width: 20px ;
+}
+

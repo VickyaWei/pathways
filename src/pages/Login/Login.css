@@ -1,0 +1,77 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; 
+}
+
+
+.login {
+  text-align: center;
+  width: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  background-color: #fff; 
+}
+
+
+.login-title {
+  font-size: 32px;
+  margin-bottom: 10px; 
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-subtitle {
+  font-size: 18px; 
+  margin-bottom: 20px; 
+  align-items: center;
+  justify-content: center;
+}
+
+
+button {
+  padding: 12px 24px; 
+  background-color: #007bff; 
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px; 
+  transition: background-color 0.3s ease;
+}
+
+
+#signInDiv button {
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+#signInDiv button:hover {
+  background-color: #0056b3; 
+}
+
+
+#signInDiv img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; 
+  margin-bottom: 10px;
+}
+
+#signInDiv h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
