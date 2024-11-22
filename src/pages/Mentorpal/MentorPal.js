@@ -9,6 +9,7 @@ import { panels as mentorPanels } from "../../panels";
 import FooterWithTimer from "../../components/Footer/FooterWithTimer";
 import Footer from "../../components/Footer/Footer";
 import PanelCard from "../../components/Cards/PanelCard";
+import { appendHomePageDataToUrl } from "../../utils/appendHomePageDataToUrl";
 
 const MentorPal = ({
   showExtras = true,
@@ -19,33 +20,32 @@ const MentorPal = ({
   const [query, setQuery] = useState("");
   const [filteredMentors, setFilteredMentors] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
+  const [isIntroCollapsed, setIsIntroCollapsed] = useState(false);
+  const [selectedContent, setSelectedContent] = useState(null);
 
+  const filterMentors = useCallback((query, selectedKeywords) => {
+    const newFilteredMentors = mentors.filter((mentor) => {
+      if (!mentor || !mentor.keywords) return false;
 
-  const filterMentors = useCallback(
-    (query, selectedKeywords) => {
-      const newFilteredMentors = mentors.filter((mentor) => {
-        if (!mentor || !mentor.keywords) return false;
+      const matchesName = mentor.name
+        .toLowerCase()
+        .includes(query.toLowerCase());
+      const matchesTitle = mentor.title
+        .toLowerCase()
+        .includes(query.toLowerCase());
+      const matchesKeywords =
+        selectedKeywords.length === 0 ||
+        selectedKeywords.some((keywordId) =>
+          mentor.keywords
+            .map((keyword) => keyword.toLowerCase())
+            .includes(keywordId.toLowerCase())
+        );
 
-        const matchesName = mentor.name
-          .toLowerCase()
-          .includes(query.toLowerCase());
-        const matchesTitle = mentor.title
-          .toLowerCase()
-          .includes(query.toLowerCase());
-        const matchesKeywords =
-          selectedKeywords.length === 0 ||
-          selectedKeywords.some((keywordId) =>
-            mentor.keywords
-              .map((keyword) => keyword.toLowerCase())
-              .includes(keywordId.toLowerCase())
-          );
+      return (matchesName || matchesTitle) && matchesKeywords;
+    });
 
-        return (matchesName || matchesTitle) && matchesKeywords;
-      });
-
-      setFilteredMentors(newFilteredMentors);
-    },
-  );
+    setFilteredMentors(newFilteredMentors);
+  });
 
   useEffect(() => {
     filterMentors(query, selectedKeywords);
@@ -64,6 +64,14 @@ const MentorPal = ({
     });
   };
 
+  const toggleIntroCollapse = () => {
+    setIsIntroCollapsed(!isIntroCollapsed);
+  };
+
+  const handleCardSelect = (url, title, targetMentors = []) => {
+    const updatedUrl = appendHomePageDataToUrl(targetMentors, url);
+    setSelectedContent({ url: updatedUrl, title });
+  };
 
   const mentorData = [
     { title: "Select a mentor", image: "./images/selective.png", number: 1 },
@@ -83,55 +91,75 @@ const MentorPal = ({
   return (
     <div className={`mentorpal ${isMentorsPage ? "mentors-page" : ""}`}>
       {showExtras && <Header />}
-      {showExtras && (
-        <div className="intro-tiles-container">
-          {mentorData.map((mentor, index) => (
-            <React.Fragment key={mentor.number}>
-              <div
-                className="intro-tile"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)), url(${mentor.image})`,
-                  backgroundSize: "25%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                }}
-              >
-                <div className="intro-tile-content">
-                  <h1
-                    className="intro-tile-title"
-                    style={{
-                      fontSize: "1.5em",
-                      fontWeight: "bold",
-                      color: "#084b8a",
-                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.15)",
-                    }}
-                  >
-                    {mentor.title}
-                  </h1>
+
+      {showExtras && !selectedContent && (
+        <div className="intro-section">
+          <div
+            className={`intro-tiles-container ${
+              isIntroCollapsed ? "collapsed" : ""
+            }`}
+          >
+            {mentorData.map((mentor, index) => (
+              <React.Fragment key={mentor.number}>
+                <div
+                  className="intro-tile"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(245, 246, 247, 0.8), rgba(245, 246, 247, 0.8)), url(${mentor.image})`,
+                    backgroundSize: "25%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div className="intro-tile-content">
+                    <h1 className="intro-tile-title">{mentor.title}</h1>
+                  </div>
                 </div>
-              </div>
-              {index < mentorData.length - 1 && <div className="arrow">→</div>}
-            </React.Fragment>
-          ))}
+                {index < mentorData.length - 1 && (
+                  <div className="intro-tile-arrow">→</div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+          <div
+            className={`collapse-arrow ${isIntroCollapsed ? "collapsed" : ""}`}
+            onClick={toggleIntroCollapse}
+            aria-label={isIntroCollapsed ? "Expand intro" : "Collapse intro"}
+          >
+            <span className="arrow-icon"></span>
+          </div>
         </div>
       )}
 
-      <div className="mentor-search-container">
-        <div className="mentor-search">
-          <Search query={query} handleSearchChange={handleSearchChange} />
+      {!selectedContent && (
+        <div className="mentor-search-container">
+          <div className="mentor-search">
+            <Search query={query} handleSearchChange={handleSearchChange} />
+          </div>
+          <div className="mentor-keywords">
+            <Keywords
+              selectedKeywords={selectedKeywords}
+              handleCheckboxChange={handleKeywordChange}
+            />
+          </div>
         </div>
-        <div className="mentor-keywords">
-          <Keywords
-            selectedKeywords={selectedKeywords}
-            handleCheckboxChange={handleKeywordChange}
-          />
-        </div>
-      </div>
+      )}
 
-      <div className="mentor-grid">
-        <div className="mentor-panels">
-          {mentorPanels.map((card) => (
-            <PanelCard 
+      {selectedContent ? (
+        <div className="embedded-content">
+          <div className="embedded-content-frame">
+            <iframe
+              src={selectedContent.url}
+              title={selectedContent.title}
+              className="content-iframe"
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="mentor-grid">
+          <div className="mentor-panels">
+            {mentorPanels.map((card) => (
+              <PanelCard
+                key={card._id}
                 id={card._id}
                 title={card.title}
                 subtitle={card.subtitle}
@@ -139,26 +167,34 @@ const MentorPal = ({
                 url={card.url}
                 isMentorsPage={isMentorsPage}
                 isSidebarOpen={isSidebarOpen}
-            />
-          ))}
+                onClick={() => handleCardSelect(card.url, card.title, card.mentors)}
+              />
+            ))}
+          </div>
+          <div className="mentor-cards">
+            {filteredMentors.map((mentor) => (
+              <Card
+                key={mentor._id.$oid}
+                id={mentor._id.$oid}
+                title={mentor.name}
+                subtitle={mentor.title}
+                thumbnail={mentor.thumbnail}
+                url={mentor.mentorUrl}
+                isMentorsPage={isMentorsPage}
+                isSidebarOpen={isSidebarOpen}
+                onClick={() => handleCardSelect(mentor.mentorUrl, mentor.name, [mentor._id.$oid])}
+              />
+            ))}
+          </div>
         </div>
-        <div className="mentor-cards">
-          {filteredMentors.map((mentor) => (
-            <Card
-              key={mentor._id.$oid}
-              id={mentor._id.$oid}
-              title={mentor.name}
-              subtitle={mentor.title}
-              thumbnail={mentor.thumbnail}
-              url={mentor.mentorUrl}
-              isMentorsPage={isMentorsPage}
-              isSidebarOpen={isSidebarOpen}
-            />
-          ))}
-        </div>
-      </div>
+      )}
 
-      {showExtras && (isResearchParticipant ? <FooterWithTimer /> : <Footer />)}
+      {showExtras &&
+        (isResearchParticipant ? (
+          <FooterWithTimer setSelectedContent={setSelectedContent} />
+        ) : (
+          <Footer />
+        ))}
     </div>
   );
 };

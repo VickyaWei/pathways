@@ -1,39 +1,46 @@
-
 .footer-with-timer-container {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 5px 15px;
   border-top: 1px solid #ccc;
   background-color: #f1f1f1;
   z-index: 1000;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .footer-timer {
-  flex: 1; 
-  text-align: center; 
+  flex: 1;
+  text-align: center;
+}
+
+.footer-previous-button {
+  background-color: #084b8a !important;
+  color: white !important;
+  margin-right: 10px;
 }
 
 .footer-timer-button {
-  justify-self: flex-end;
   background-color: #084b8a !important;
-  color: white !important; 
+  color: white !important;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  margin-left: 10px;
 }
 
 .footer-timer-button:disabled {
-
-  opacity: 0.7; 
-  cursor: not-allowed; 
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .footer-timer-button:hover:not(:disabled) {
@@ -43,6 +50,7 @@
 .footer-timer {
   font-size: 16px;
   color: #333;
+  white-space: nowrap;
 }
 
 .snooze-button {
@@ -58,7 +66,7 @@
 }
 
 .recommendations-button {
-  background-color: #28a745; 
+  background-color: #28a745;
   color: white;
   border-radius: 5px;
   padding: 5px 10px;

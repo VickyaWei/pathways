@@ -8,11 +8,19 @@ import {
 import useBookmarks from "../../hooks/useBookmarks";
 import "./CardStyles.css";
 
-
-const PanelCard = ({ id, title, subtitle, mentors, url, isMentorsPage, isSidebarOpen }) => {
+const PanelCard = ({
+  id,
+  title,
+  subtitle,
+  mentors,
+  url,
+  isMentorsPage,
+  isSidebarOpen,
+  onClick
+}) => {
   const displayMentors = mentors.slice(0, 4);
+  
   const findMentorById = (id) => {
-    // Ensure that mentor and _id.$oid exist before accessing
     return eachMentor.find((mentor) => mentor._id && mentor._id.$oid === id);
   };
 
@@ -20,20 +28,39 @@ const PanelCard = ({ id, title, subtitle, mentors, url, isMentorsPage, isSidebar
 
   const isBookmarked = bookmarkedMentors.some((item) => item._id === id);
 
+  const handleClick = (e) => {
+    if (!e.target.closest('.card-bookmark-button')) {
+      onClick();
+    }
+  };
 
+  const handleLinkClick = (e) => {
+    e.preventDefault();
+    if (!e.target.closest('.card-bookmark-button')) {
+      onClick();
+    }
+  };
 
-  const handleBookmark = () => {
+  const handleBookmark = (e) => {
+    e.stopPropagation();
     toggleBookmark({ _id: id, title, subtitle, mentors, url }, 'mentor');
   };
 
   return (
-    <div className={`card ${isMentorsPage ? "card-mentors-page" : ""} ${isSidebarOpen ? "" : "sidebar-closed-card"}`}>
+    <div 
+      className={`card ${isMentorsPage ? "card-mentors-page" : ""} ${
+        isSidebarOpen ? "" : "sidebar-closed-card"
+      }`}
+      onClick={handleClick}
+    >
       <h2 className="card-title">{title}</h2>
-      <a href={url} className="panel-card-link">
+      <div 
+        className="panel-card-link" 
+        onClick={handleLinkClick}
+      >
         <div className="panel-card-thumbnail-container">
           {displayMentors.map((mentorId, index) => {
             const mentorData = findMentorById(mentorId);
-
             return (
               mentorData && (
                 <div key={index}>
@@ -47,7 +74,7 @@ const PanelCard = ({ id, title, subtitle, mentors, url, isMentorsPage, isSidebar
             );
           })}
         </div>
-      </a>
+      </div>
       <h3 className="card-subtitle">{subtitle}</h3>
 
       <button

@@ -16,6 +16,7 @@ const Card = ({
   url,
   isMentorsPage,
   isSidebarOpen,
+  onClick
 }) => {
   const { bookmarkedMentors, toggleBookmark } = useBookmarks();
 
@@ -26,11 +27,25 @@ const Card = ({
       (mentor._id && mentor._id.$oid ? mentor._id.$oid : mentor.id) === cardId
   );
 
-  const handleBookmark = () => {
+  const handleBookmark = (e) => {
+    e.stopPropagation();
     toggleBookmark(
       { _id: { $oid: cardId }, title, subtitle, thumbnail, url },
       "mentor"
     );
+  };
+
+  const handleClick = (e) => {
+    if (!e.target.closest('.card-bookmark-button')) {
+      onClick();
+    }
+  };
+
+  const handleLinkClick = (e) => {
+    e.preventDefault();
+    if (!e.target.closest('.card-bookmark-button')) {
+      onClick();
+    }
   };
 
   return (
@@ -38,13 +53,21 @@ const Card = ({
       className={`card ${isMentorsPage ? "card-mentors-page" : ""} ${
         isSidebarOpen ? "" : "sidebar-closed-card"
       }`}
+      onClick={handleClick}
     >
       <h2 className="card-title">{title}</h2>
-      <a href={url} className="card-link">
+      <div 
+        className="card-link" 
+        onClick={handleLinkClick}
+      >
         <img src={thumbnail} alt={title} className="card-thumbnail" />
-      </a>
+      </div>
       <h3 className="card-subtitle">{subtitle}</h3>
-      <button onClick={handleBookmark} className="card-bookmark-button">
+      <button 
+        onClick={handleBookmark} 
+        className="card-bookmark-button"
+        aria-label={isBookmarked ? "Remove Bookmark" : "Add Bookmark"}
+      >
         <FontAwesomeIcon
           icon={isBookmarked ? faBookmarkSolid : faBookmark}
           className={`card-bookmark-icon ${isBookmarked ? "blue" : "white"}`}

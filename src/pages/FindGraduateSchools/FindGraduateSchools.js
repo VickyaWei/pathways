@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import DegreeDropdown from "../../components/DegreeDropdown/DegreeDropdown";
 import SubfieldDropdown from "../../components/SubfieldDropdown/SubfieldDropdown";
-
-import "./FindGraduateSchools.css";
 import ResourceTile from "../../components/ResourceTiles/ResourceTiles";
+import Disclaimer from "../../components/Disclaimer/Disclaimer";
+import "./FindGraduateSchools.css";
 
-const FindGraduateSchools = () => {
+const FindGraduateSchools = ({ isSidebarOpen }) => {
   const [selectedSubfield, setSelectedSubfield] = useState("");
   const [selectedDegree, setSelectedDegree] = useState("");
   const [changed, setChanged] = useState(false);
@@ -21,20 +21,29 @@ const FindGraduateSchools = () => {
   };
   return (
     <div className="Find-Graduate-Schools">
-      <div className="dropdown-list">
-        <DegreeDropdown
-          onDegreeChange={handleDegreeChange}
-          className="degree-dropdown"
-        />
-        <SubfieldDropdown
-          onSubfieldChange={handleSubfieldChange}
-          className="subfield-dropdown"
-        />
+      <div className="resources-container">
+        <div>
+          <p className="graduate-highlighted-paragraph">Graduate School Resources</p>
+        </div>
+        <div className="dropdown-list">
+          <DegreeDropdown
+            onDegreeChange={handleDegreeChange}
+            className="degree-dropdown"
+          />
+          <SubfieldDropdown
+            onSubfieldChange={handleSubfieldChange}
+            className="subfield-dropdown"
+          />
+        </div>
       </div>
 
       <div className={changed ? "change-container" : "start-container"}>
         <div className="general-tiles">
-          <ResourceTile tagFilter="Degree General Resources" className="degree-general-tile" />
+          <ResourceTile
+            tagFilter="Degree General Resources"
+            className="degree-general-tile"
+            isSidebarOpen={isSidebarOpen}
+          />
         </div>
         <br />
         <div className="additional-tiles">
@@ -46,6 +55,7 @@ const FindGraduateSchools = () => {
           />
         </div>
       </div>
+      <Disclaimer />
     </div>
   );
 };

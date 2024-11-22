@@ -30,10 +30,16 @@ const Sidebar = ({ children }) => {
     <div className="container">
       <div className={`sidebar ${isOpen ? "" : "closed"}`}>
         <div className="top_section">
-          <h1 className="logo" style={{ display: isOpen ? "block" : "none" }}>
-            Logo
-          </h1>
-          <div className="bars" style={{ marginLeft: isOpen ? "65px" : "0px" }}>
+          <div className="logo" style={{ display: isOpen ? "block" : "none" }}>
+            <div className="logo-container">
+              <img
+                src="/images/Pathways.png"
+                alt="pathways Logo"
+                className="pathways-logo"
+              />
+            </div>
+          </div>
+          <div className="bars" style={{ marginLeft: isOpen ? "45px" : "-4px" }}>
             <FaBars
               className="fa-bars-icon"
               onClick={toggle}
@@ -47,10 +53,13 @@ const Sidebar = ({ children }) => {
             key={index}
             className="link"
             style={({ isActive }) => ({
-              color: isActive ? "blue" : "black",
+              color: isActive ? "#084b8a" : "#084b8a",
             })}
           >
-            <div className="icon">{item.icon}</div>
+            <div className="icon-container">
+              <div className="icon">{item.icon}</div>
+              {!isOpen && <div className="tooltip">{item.name}</div>}
+            </div>
             <div
               className="link_text"
               style={{ display: isOpen ? "block" : "none" }}

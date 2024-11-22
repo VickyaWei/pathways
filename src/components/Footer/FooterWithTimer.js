@@ -11,7 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./FooterWithTimer.css";
 
-const FooterWithTimer = ({ onPrevious, onNext }) => {
+const FooterWithTimer = ({ setSelectedContent }) => {
   const initialTimeInSeconds = 1 * 20;
   const [timeLeft, setTimeLeft] = useState(() => {
     const savedTime = localStorage.getItem("timeLeft");
@@ -66,8 +66,18 @@ const FooterWithTimer = ({ onPrevious, onNext }) => {
     navigate("/transition"); // Redirect to transition page
   };
 
+  const handlePrevious = () => {
+    setSelectedContent(null);
+  };
+
   return (
     <Box className="footer-with-timer-container">
+      <Button 
+        className="footer-previous-button" 
+        onClick={handlePrevious}
+      >
+        Back
+      </Button>
       {timeLeft > 0 && (
         <Typography className="footer-timer">
           Time Left: {formatTime(timeLeft)}

@@ -1,8 +1,9 @@
-import React from "react";
-import MultilevelDropdown from "react-multilevel-dropdown";
-import "./Keywords.css";
+import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import './Keywords.css';
 
 const Keywords = ({ selectedKeywords, handleCheckboxChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const keywordItems = [
     {
       title: "Select Keywords",
@@ -64,47 +65,55 @@ const Keywords = ({ selectedKeywords, handleCheckboxChange }) => {
     },
   ];
 
+  const [openDropdowns, setOpenDropdowns] = useState({});
 
-  const renderDropdownItems = (items) => {
-    return items.map((item) => (
-      <MultilevelDropdown.Item key={item.id}>
-        {item.title}
-        {item.children && item.children.length > 0 && (
-          <MultilevelDropdown.Submenu
-            position="right"
-            style={{ width: "200px" }}
-          >
-            {item.children.map((submenu) => (
-              <div key={submenu.id}>
-                <label className="submenu-item">
-                  <input
-                    type="checkbox"
-                    checked={selectedKeywords.includes(submenu.id)}
-                    onChange={() => handleCheckboxChange(submenu.id)}
-                  />
-                  <span>{submenu.title}</span>
-                </label>
-              </div>
-            ))}
-          </MultilevelDropdown.Submenu>
-        )}
-      </MultilevelDropdown.Item>
+  const toggleDropdown = (id) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const renderSubItems = (children) => {
+    return children.map((child) => (
+      <label key={child.id} className="checkbox-item">
+        <input
+          type="checkbox"
+          checked={selectedKeywords.includes(child.id)}
+          onChange={() => handleCheckboxChange(child.id)}
+        />
+        <span>{child.title}</span>
+      </label>
     ));
   };
 
+  const renderMenuItems = (items) =>
+    items.map((item) => (
+      <div key={item.id} className="dropdown-item">
+        <div className="dropdown-trigger">
+          {item.title}
+        </div>
+        <div className="dropdown-content">
+          {renderSubItems(item.children)}
+        </div>
+      </div>
+    ));
+
   return (
-    <div className="KeywordDropdown">
-      {keywordItems.map((menu) => (
-        <MultilevelDropdown
-          key={menu.id}
-          title={menu.title}
-          menuClassName="dropdown-item"
-        >
-          {renderDropdownItems(menu.children)}
-        </MultilevelDropdown>
-      ))}
+    <div className="keywords-wrapper">
+      <div 
+        className="dropdown-button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>Select Keywords</span>
+        <ChevronDown size={16} />
+      </div>
+      {isOpen && (
+        <div className="dropdown-items">
+          {renderMenuItems(keywordItems[0].children)}
+        </div>
+      )}
     </div>
   );
 };
-
 export default Keywords;

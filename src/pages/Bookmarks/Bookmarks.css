@@ -1,18 +1,20 @@
 .bookmarks {
-    padding: 20px; 
-  }
-  
-  .bookmark-tiles {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 20px;
-    justify-content: flex-start; 
-  }
-  .bookmark-section h2{
-    color: #084b8a;
-  }  
+  width: 100%;
+}
 
-  .mentor-bookmark-tiles{
-    display: flex;
-    margin-left: -10px;;
-  }
+.bookmark-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: flex-start;
+}
+.bookmark-section h2 {
+  margin-top: 10px;
+  color: #084b8a;
+}
+
+.mentor-bookmark-tiles {
+  margin-left: -10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  width: 100%;
+}

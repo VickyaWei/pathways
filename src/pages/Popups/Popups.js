@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import './Popups.css';
+import "./Popups.css";
 
 const Popups = ({
   title,
@@ -14,47 +14,40 @@ const Popups = ({
   showPrevious,
   currentPopup,
   totalPopups,
-  onFinal
+  onFinal,
 }) => {
   return (
     <div className="popupBackground">
       <div className="popupContainer">
-        <div className="title">
-          <h1>{title}</h1>
-        </div>
-
-        <div className="middle">
-          <div className="leftNote">
-            <p>{leftNote}</p>
+        <div className="contentWrapper">
+          <div className="popup-title">
+            <h1>{title}</h1>
           </div>
 
-          <div className="imageContainer">
-            {image && (
+          {image && (
+            <div className="imageContainer">
               <img src={image} alt="Popup Image" className="popupImage" />
-            )}
-          </div>
+            </div>
+          )}
 
-          <div className="rightNote">
-            <p>{rightNote}</p>
+          <div className="textContent">
+            <p className="popup-message">{message}</p>
+            {addition && <p className="popup-note">{addition}</p>}
           </div>
         </div>
 
-        <div className="body">
-          <p>{message}</p>
-          <p className="note">{addition}</p>
+        <div className="navigationButtons">
+          {showPrevious && (
+            <FaArrowLeft className="arrowButton left" onClick={onPrevious} />
+          )}
+          {currentPopup === totalPopups - 1 ? (
+            <button className="letGoButton" onClick={onFinal}>
+              Let's go
+            </button>
+          ) : (
+            <FaArrowRight className="arrowButton right" onClick={onNext} />
+          )}
         </div>
-
-        {showPrevious && (
-          <FaArrowLeft className="arrowButton left" onClick={onPrevious} />
-        )}
-        {currentPopup === totalPopups - 1 ? (
-          <button className="letGoButton" onClick={onFinal}> {/* Use onFinal for the button */}
-            Let's go
-          </button>
-        ) : (
-          <FaArrowRight className="arrowButton right" onClick={onNext} />
-        )}
-        
       </div>
     </div>
   );

@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes, Outlet, useLocation } from "react-router-dom";
+import {
+  FaTh,
+  FaBookmark,
+  FaCogs,
+  FaUserTie,
+  FaGraduationCap,
+  FaBriefcase,
+  FaComments,
+  FaSearch
+} from "react-icons/fa";
 import GetResearchExperience from "../GetResearchExperience/GetResearchExperience";
 import ExploreCareers from "../ExploreCareers/ExploreCareers";
 import FindGraduateSchools from "../FindGraduateSchools/FindGraduateSchools";
@@ -10,18 +20,32 @@ import Set from "../Set/Settings";
 import Subhead from "../../components/Subhead/Subhead";
 import Footer from "../../components/Footer/Footer";
 import { Mentors } from "../Mentors/Mentors";
-import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PopupModals from "../../components/PopupModals/PopupModals";
 
 const MainContent = ({ isSidebarOpen }) => {
+  const location = useLocation();
+  
+  // Array of paths where Subhead should appear
+  const pathsWithSubhead = [
+    '',
+    '/get-research-experience',
+    '/explore-careers',
+    '/find-graduate-schools',
+    '/talk-to-an-expert',
+    '/find-internships'
+  ];
+
+  // Check if current path should show Subhead
+  const shouldShowSubhead = pathsWithSubhead.includes(location.pathname.replace('/recommenderpage', ''));
+
   return (
     <div
       className={`main-container ${
         isSidebarOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >
-      <Subhead />
+      {shouldShowSubhead && <Subhead />}
       <div className="content">
         <Outlet />
       </div>
@@ -36,15 +60,66 @@ const RecommenderPage = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
+  const menuItems = [
+    {
+      path: "/recommenderpage/get-research-experience",
+      name: "Research Experience",
+      icon: <FaSearch />
+    },
+    {
+      path: "/recommenderpage/explore-careers",
+      name: "Explore Careers",
+      icon: <FaBriefcase />
+    },
+    {
+      path: "/recommenderpage/find-graduate-schools",
+      name: "Graduate Schools",
+      icon: <FaGraduationCap />
+    },
+    {
+      path: "/recommenderpage/talk-to-an-expert",
+      name: "Talk to Expert",
+      icon: <FaComments />
+    },
+    {
+      path: "/recommenderpage/find-internships",
+      name: "Internships",
+      icon: <FaTh />
+    },
+    {
+      path: "/recommenderpage/bookmarks",
+      name: "Bookmarks",
+      icon: <FaBookmark />
+    },
+    {
+      path: "/recommenderpage/mentors",
+      name: "Mentors",
+      icon: <FaUserTie />
+    },
+    {
+      path: "/recommenderpage/settings",
+      name: "Settings",
+      icon: <FaCogs />
+    }
+  ];
+
   return (
     <>
       <PopupModals />
-      <Sidebar isOpen={isSidebarOpen}>
+      <Sidebar 
+        isOpen={isSidebarOpen} 
+        toggleSidebar={toggleSidebar}
+        menuItems={menuItems}
+      >
         <Routes>
           <Route
             path="/"
             element={<MainContent isSidebarOpen={isSidebarOpen} />}
           >
+            <Route
+              index
+              element={<GetResearchExperience isSidebarOpen={isSidebarOpen} />}
+            />
             <Route
               path="homepage"
               element={<ExploreCareers isSidebarOpen={isSidebarOpen} />}

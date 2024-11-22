@@ -4,30 +4,27 @@ import { faBookmark, faBookmark as faBookmarkSolid } from "@fortawesome/free-sol
 import useBookmarks from "../../hooks/useBookmarks";
 import "./Tile.css";
 
-const Tile = ({ id, title, description, thumbnail, url, isResearchPage }) => {
+const Tile = ({ id, title, description, thumbnail, url, isResearchPage, isSidebarOpen }) => {
   const { bookmarkedResources, toggleBookmark } = useBookmarks();
-
   const isBookmarked = bookmarkedResources.some((item) => item.id === id);
 
   const handleBookmark = () => {
     toggleBookmark({ id, title, description, thumbnail, url }, 'resource');
   };
 
-
   const renderDescription = () => {
     if (typeof description === 'string') {
-      return <p>{description}</p>;
+      return <p className="tile-description">{description}</p>;
     } else if (description && description.content) {
-      return description.content.map((item, index) => (
-        <p key={index}>{item.content[0].value}</p>
-      ));
-    } else {
-      return <p>No description available</p>;
+      return <p className="tile-description">
+        {description.content[0]?.content[0]?.value || 'No description available'}
+      </p>;
     }
+    return <p className="tile-description">No description available</p>;
   };
 
   return (
-    <div className={`tile ${isResearchPage ? "research-page-tile" : ""}`}>
+    <div className={`tile ${isResearchPage ? "research-page-tile" : ""} ${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
       <div className="tile-content">
         <a href={url} target="_blank" rel="noopener noreferrer">
           <img src={thumbnail} alt={title} className="tile-thumbnail" />
@@ -37,6 +34,7 @@ const Tile = ({ id, title, description, thumbnail, url, isResearchPage }) => {
         <button
           onClick={handleBookmark}
           className="bookmark-button"
+          aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
         >
           <FontAwesomeIcon
             icon={isBookmarked ? faBookmarkSolid : faBookmark}

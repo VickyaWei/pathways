@@ -1,42 +1,41 @@
 .subhead-container {
   display: flex;
   width: 100%;
-  background-color: #1e4b8d; /* Dark blue background for the container */
+  background-color: #1e4b8d; 
   padding: 0;
   margin: 0;
   align-items: flex-end;
-  height: 50px; /* Fixed height for tabs */
-  border-bottom: 2px solid #004080; /* Darker blue border for more definition */
+  height: 50px; 
+  /* border-bottom: 2px solid #004080;  */
 }
 
 .subhead-option {
   font-family: Arial, sans-serif;
-  color: #fff; /* White text color for tabs */
+  color: #fff; 
   text-decoration: none;
-  padding: 12px 20px; /* Increased padding for better click area */
+  padding: 12px 20px;
   font-size: 16px;
-  font-weight: bold; /* Bold text for better visibility */
-  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
-  border-radius: 10px 10px 0 0; /* Rounded top corners */
-  margin-right: 4px; /* Slightly increased margin for separation */
-  background-color: #6c757d; /* Medium gray background for inactive tabs */
-  position: relative; /* Positioning context for pseudo-elements */
+  font-weight: bold; 
+  transition: background-color 0.3s, box-shadow 0.3s; 
+  border-radius: 0px 10px 0 0; 
+  margin-right: 4px; 
+  background-color: #6c757d; 
+  position: relative;
 }
 
 .subhead-option:hover {
-  background-color: #b3b3b4; /* Darker gray background on hover */
-  cursor: pointer; /* Pointer cursor to indicate clickability */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect to indicate elevation */
+  background-color: #b3b3b4; 
+  cursor: pointer; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .subhead-option.active {
-  background-color: #ffffff; /* White background for the active tab */
-  color: #003366; /* Dark blue text for active tab */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow for active tab */
+  background-color: #ffffff; 
+  color: #003366;
 }
 
 .main-container {
-  background-color: #ffffff; /* Ensure main content background is white */
+  background-color: #ffffff; 
   padding-top: 20px;
-  margin-top: -50px; /* Aligns the content properly with the tab bar */
+  margin-top: -50px; 
 }

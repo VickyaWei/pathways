@@ -1,0 +1,127 @@
+
+.content-page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  border-radius: 0.5rem; 
+  overflow: visible;
+  margin-top: 50px;
+  margin-left: 250px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slides-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.hidden-slide {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: drop-shadow(0px 0px 5px #555);
+  width: 3rem;
+  height: 3rem;
+  color: white;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.arrow-left {
+  left:-30px;
+}
+
+.arrow-right {
+  right: -30px;
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.indicator {
+  background-color: white;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: grey;
+}
+
+
+.lets-go-button {
+  position: absolute;
+  right: -30px;  /* Move it further to the right */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  overflow: visible; 
+}
+
+.lets-go-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 640px) {
+  .content-page {
+    height: 80vh;
+    width: 90%;
+  }
+}
