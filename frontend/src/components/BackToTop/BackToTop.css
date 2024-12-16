@@ -1,0 +1,35 @@
+.back-to-top {
+  position: fixed;
+  bottom: 4em;
+  right: 2em;
+  background: #084b8a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  opacity: 1;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  transform: scale(1.2);
+}

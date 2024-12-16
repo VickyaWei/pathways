@@ -1,0 +1,98 @@
+.explore-careers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+
+.dropdown-list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.career-highlighted-paragraph {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #084b8a;
+  font-family: "Georgia", serif;
+  position: relative;
+  padding-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.career-highlighted-paragraph::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 3px;
+  background: linear-gradient(to right, #084b8a, rgba(8, 75, 138, 0.1));
+  border-radius: 2px;
+}
+
+
+.dropdown-list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.start-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.resource-tiles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.career-change-container{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+.career-change-container .general-tiles {
+  grid-column: 1;
+}
+
+.career-change-container .additional-tiles {
+  grid-column: 2;
+  margin-top: -1140px;
+  grid-column: 2 / 5;
+}
+
+.general-tiles,
+.additional-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .career-highlighted-paragraph {
+    font-size: 18px; /* Smaller font for smaller screens */
+    text-align: center;
+  }
+
+  .career-highlighted-paragraph::after {
+    width: 80%; 
+    left: 10%; 
+  }
+
+  .resource-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+}

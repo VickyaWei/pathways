@@ -1,0 +1,58 @@
+.settings-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px; 
+    display: flex;
+    align-items: center; 
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0; 
+    font-weight: normal;
+    margin-right: 15px; 
+    flex: 1;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-group input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+  }
+  
+  .save-button {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3; 
+  }
+  

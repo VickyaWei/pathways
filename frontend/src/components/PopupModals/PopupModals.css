@@ -1,0 +1,80 @@
+/* PopupModals.css */
+
+.joyride-tooltip {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 350px;
+  color: #fff;
+}
+
+
+.joyride-tooltip__arrow {
+  border-color: #084b8a;
+}
+
+
+.joyride-tooltip__body {
+  background-color: #084b8a;
+}
+
+
+.joyride-tooltip__content {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+.joyride-tooltip__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.joyride-tooltip__button--primary {
+  background-color: #fff;
+  color: #084b8a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.joyride-tooltip__button--primary:hover {
+  background-color: #e6e6e6;
+}
+
+.joyride-tooltip__button--skip {
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.joyride-tooltip__button--skip:hover {
+  color: #cce4ff;
+}
+
+
+.joyride-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+@media (max-width: 480px) {
+  .joyride-tooltip {
+    max-width: 90%;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .joyride-tooltip__button--primary {
+    padding: 6px 12px;
+  }
+}

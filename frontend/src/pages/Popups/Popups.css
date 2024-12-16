@@ -1,0 +1,123 @@
+.popupBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Prevent scrolling on the background */
+}
+
+.popupContainer {
+  width: 900px;
+  min-height: 500px;
+  max-height: 80vh; /* Ensure the container doesn't exceed viewport height */
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
+  position: relative;
+  overflow: hidden; /* Prevent horizontal overflow */
+  padding: 25px;
+}
+
+.contentWrapper {
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  max-height: calc(80vh - 50px); /* Account for padding and adjust dynamically */
+}
+
+.popup-title h1 {
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.popupImage {
+  max-height: 100%;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  object-fit: contain; /* Ensure image scales properly */
+}
+
+.textContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.popup-note {
+  font-style: italic;
+  color: #837f7f;
+  margin-top: 10px;
+}
+
+.navigationButtons {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrowButton {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: white;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.arrowButton.left {
+  left: -25px;
+}
+
+.arrowButton.right {
+  right: -25px;
+}
+
+.arrowButton:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.letGoButton {
+  position: absolute;
+  right: 20px; /* Prevent overflow to the right */
+  bottom: 20px; /* Position at bottom-right corner */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.letGoButton:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
