@@ -76,3 +76,17 @@
 .recommendations-button:hover {
   background-color: #218838;
 }
+
+@media screen and (max-width: 460px) {
+  .footer-previous-button {
+    font-size: 10px  !important;
+  }
+
+  .footer-timer-button {
+    font-size: 10px  !important;
+  }
+
+  .footer-timer {
+    font-size: 14px  !important;
+  }
+}

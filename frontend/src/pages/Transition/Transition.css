@@ -56,3 +56,19 @@
     opacity: 0;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .loading-screen {
+    gap: 20px; /* Increased gap for mobile */
+    padding: 20px;
+  }
+
+  .dots {
+    margin-bottom: 40px; /* More space below dots on mobile */
+  }
+
+  .loading-text {
+    font-size: 1.8em; /* Slightly smaller font on mobile */
+  }
+}

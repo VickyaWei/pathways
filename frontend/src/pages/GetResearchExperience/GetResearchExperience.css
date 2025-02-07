@@ -1,3 +1,4 @@
+
 .get-research-experience-container {
   width: 100%;
 }
@@ -36,6 +37,7 @@ h2 {
   color: #007bff;
   margin-bottom: 10px;
 }
+
 .title {
   text-align: center;
   font-size: 24px;
@@ -44,43 +46,26 @@ h2 {
   margin-bottom: 10px;
   font-family: "Georgia", serif;
 }
+
 @media (max-width: 768px) {
   .title {
-    font-size: 20px; /* Adjust font size */
+    font-size: 18px; 
   }
 
   .research-highlighted-paragraph {
-    font-size: 16px; /* Slightly smaller font */
+    font-size: 12px; 
     margin-bottom: 10px;
   }
 
   .tile-grid {
-    grid-template-columns: 1fr; /* Single column layout */
+    margin-left:25px;
+    grid-template-columns: 1fr; 
   }
 
   .facultyContainer,
   .otherContainer {
-    padding: 10px; /* Reduce padding */
+    padding: 10px; 
   }
 }
 
-@media (max-width: 480px) {
-  .title {
-    font-size: 18px; /* Smaller title */
-    margin-bottom: 8px;
-  }
-
-  .research-highlighted-paragraph {
-    font-size: 14px; /* Adjust paragraph text */
-  }
-
-  .tile-grid {
-    gap: 10px; /* Reduce gap between tiles */
-  }
-
-  .facultyContainer,
-  .otherContainer {
-    padding: 8px; /* Tighten up spacing */
-  }
-}
 

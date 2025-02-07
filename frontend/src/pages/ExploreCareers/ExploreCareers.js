@@ -16,10 +16,8 @@ const ExploreCareers = ({ isSidebarOpen }) => {
   return (
     <div className="explore-careers">
       <div className="resources-container">
-        <div>
-          <p className="career-highlighted-paragraph">
-            Career Exploration Resources
-          </p>
+        <div className="career-highlighted-paragraph">
+          Career Exploration Resources
         </div>
         <div className="dropdown-list">
           <SubfieldDropdown
@@ -29,8 +27,18 @@ const ExploreCareers = ({ isSidebarOpen }) => {
         </div>
       </div>
 
+      {/* Toggle Section Links for Mobile */}
+      <div className="section-links">
+        <a href="#general-resources" className="link-item">
+          General Resources
+        </a>
+        <a href="#additional-resources" className="link-item">
+          Subfield-Based Resources
+        </a>
+      </div>
+
       <div className={changed ? "career-change-container" : "start-container"}>
-        <div className="general-tiles">
+        <div className="general-tiles" id="general-resources">
           <ResourceTile
             tagFilter="Career General Resources"
             className="career-general-tile"
@@ -38,7 +46,7 @@ const ExploreCareers = ({ isSidebarOpen }) => {
           />
         </div>
         <br />
-        <div className="additional-tiles">
+        <div className="additional-tiles" id="additional-resources">
           <ResourceTile
             tagFilter="Career Additional Resources"
             selectedSubfield={selectedSubfield}

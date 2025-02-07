@@ -55,3 +55,13 @@
     background-color: #f8f9fa;
     margin: 0;
   }
+
+  @media screen and (max-width: 768px) {
+    .content-title{
+      font-size: 30px;
+    }
+
+    .content-description{
+      margin-top: 30px;
+    }
+  }

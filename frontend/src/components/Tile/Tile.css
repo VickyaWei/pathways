@@ -74,3 +74,32 @@
 .bookmark-icon.blue {
   color: #084b8a;
 }
+
+@media (max-width: 768px) {
+  .tile {
+    width: 310px; 
+    height: 260px; 
+    border-radius: 8px; 
+  }
+
+  .tile-content {
+    padding: 10px; 
+  }
+
+  .tile-title {
+    font-size: 1em;
+    margin: 10px 0 5px;
+  }
+
+  .tile-description {
+    font-size: 0.85em; 
+    -webkit-line-clamp: 3; 
+    min-height: calc(1.5em * 3);
+  }
+
+  .bookmark-button {
+    font-size: 20px; 
+    bottom: 75px;
+    right: 10px;
+  }
+}

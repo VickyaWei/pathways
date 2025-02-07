@@ -23,7 +23,9 @@ const FindGraduateSchools = ({ isSidebarOpen }) => {
     <div className="Find-Graduate-Schools">
       <div className="resources-container">
         <div>
-          <p className="graduate-highlighted-paragraph">Graduate School Resources</p>
+          <p className="graduate-highlighted-paragraph">
+            Graduate School Resources
+          </p>
         </div>
         <div className="dropdown-list">
           <DegreeDropdown
@@ -37,8 +39,18 @@ const FindGraduateSchools = ({ isSidebarOpen }) => {
         </div>
       </div>
 
+      {/* Toggle Section Links for Mobile */}
+      <div className="section-links">
+        <a href="#general-resources" className="link-item">
+          General Resources
+        </a>
+        <a href="#additional-resources" className="link-item">
+          Subfield-Based Resources
+        </a>
+      </div>
+
       <div className={changed ? "change-container" : "start-container"}>
-        <div className="general-tiles">
+        <div className="general-tiles" id="general-resources">
           <ResourceTile
             tagFilter="Degree General Resources"
             className="degree-general-tile"
@@ -46,7 +58,7 @@ const FindGraduateSchools = ({ isSidebarOpen }) => {
           />
         </div>
         <br />
-        <div className="additional-tiles">
+        <div className="additional-tiles" id="additional-resources">
           <ResourceTile
             tagFilter="Degree Additional Resources"
             selectedSubfield={selectedSubfield}
@@ -55,7 +67,6 @@ const FindGraduateSchools = ({ isSidebarOpen }) => {
           />
         </div>
       </div>
-      
     </div>
   );
 };

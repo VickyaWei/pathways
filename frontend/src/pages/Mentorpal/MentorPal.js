@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import PanelCard from "../../components/Cards/PanelCard";
 import { appendHomePageDataToUrl } from "../../utils/appendHomePageDataToUrl";
 import { fetchHomePageData } from "../../components/fetchHomePageData";
+import BackToTop from "../../components/BackToTop/BackToTop";
 
 const MentorPal = ({
   showExtras = true,
@@ -23,6 +24,8 @@ const MentorPal = ({
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [isIntroCollapsed, setIsIntroCollapsed] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
+
+  const [userStatus, setUserStatus] = useState(1);
 
   const data = async () => await fetchHomePageData(process.env.PATHWAYS_ORG_ID);
 
@@ -49,6 +52,15 @@ const MentorPal = ({
 
     setFilteredMentors(newFilteredMentors);
   });
+
+
+  const USER_STATUS = {
+    SELECT_MENTOR: 1,
+    INTERVIEW_MENTOR: 2,
+    GET_RESOURCES: 3,
+    REVISIT: 4
+  };
+
 
   useEffect(() => {
     filterMentors(query, selectedKeywords);
@@ -85,23 +97,44 @@ const MentorPal = ({
     setIsIntroCollapsed(!isIntroCollapsed);
   };
 
-  const handleCardSelect = (url, title, targetMentors = []) => {
+  const handleCardSelect = async (url, title, targetMentors = []) => {
     const updatedUrl = appendHomePageDataToUrl(targetMentors, url);
     setSelectedContent({ url: updatedUrl, title });
+    
+    // Update user status when selecting a mentor
+    if (userStatus === USER_STATUS.SELECT_MENTOR) {
+      const newStatus = USER_STATUS.INTERVIEW_MENTOR;
+      setUserStatus(newStatus);
+      // Update status in database
+      // await updateUserStatus(userId, newStatus);
+    }
   };
 
-  const mentorData = [
-    { title: "Select a mentor", image: "./images/selective.png", number: 1 },
-    { title: "Interview mentor(s)", image: "./images/chat.png", number: 2 },
+
+const mentorData = [
+    { 
+      title: "Select a mentor", 
+      image: "./images/selective.png", 
+      number: 1,
+      status: USER_STATUS.SELECT_MENTOR
+    },
+    { 
+      title: "Interview mentor(s)", 
+      image: "./images/chat.png", 
+      number: 2,
+      status: USER_STATUS.INTERVIEW_MENTOR
+    },
     {
       title: "Get personalized resources",
       image: "./images/human-resources.png",
       number: 3,
+      status: USER_STATUS.GET_RESOURCES
     },
     {
       title: "Revisit for updates",
       image: "./images/returning-visitor.png",
       number: 4,
+      status: USER_STATUS.REVISIT
     },
   ];
 
@@ -111,23 +144,19 @@ const MentorPal = ({
 
       {showExtras && !selectedContent && (
         <div className="intro-section">
-          <div
-            className={`intro-tiles-container ${
-              isIntroCollapsed ? "collapsed" : ""
-            }`}
-          >
+          <div className={`intro-tiles-container ${isIntroCollapsed ? "collapsed" : ""}`}>
             {mentorData.map((mentor, index) => (
               <React.Fragment key={mentor.number}>
                 <div
-                  className={`intro-tile ${index === 0 ? "highlighted" : ""}`} // Add "highlighted" class to the first tile
+                  className={`intro-tile ${mentor.status === userStatus ? "highlighted" : ""}`}
                 >
                   <div
                     className="intro-tile-image"
                     style={{
                       backgroundImage: `linear-gradient(rgba(245, 246, 247, ${
-                        index === 0 ? "0.9" : "0.8"
+                        mentor.status === userStatus ? "0.9" : "0.8"
                       }), rgba(245, 246, 247, ${
-                        index === 0 ? "0.9" : "0.8"
+                        mentor.status === userStatus ? "0.9" : "0.8"
                       })), url(${mentor.image})`,
                       backgroundSize: "25%",
                       backgroundRepeat: "no-repeat",
@@ -135,15 +164,14 @@ const MentorPal = ({
                     }}
                   ></div>
 
-                  <div className="intro-tile-number">{index + 1}</div>
-
+                  <div className="intro-tile-number">{mentor.number}</div>
                   <h1 className="intro-tile-title">{mentor.title}</h1>
                 </div>
 
                 {index < mentorData.length - 1 && (
                   <div
                     className={`intro-tile-arrow ${
-                      index === 0 ? "intro-tile-arrow-highlighted" : ""
+                      mentor.status === userStatus ? "intro-tile-arrow-highlighted" : ""
                     }`}
                   >
                     →
@@ -177,54 +205,63 @@ const MentorPal = ({
       )}
 
       {selectedContent ? (
-        <div className="embedded-content">
-          <div className="embedded-content-frame">
-            <iframe
-              src={selectedContent.url}
-              title={selectedContent.title}
-              className="content-iframe"
-            />
-          </div>
+        // When content is selected, only show the iframe
+
+        <div className="embedded-content-frame">
+          <iframe
+            src={selectedContent.url}
+            title={selectedContent.title}
+            className="content-iframe"
+          />
         </div>
       ) : (
-        <div className="mentor-grid">
-          <div className="mentor-panels">
-            {panels.map((card) => (
-              <PanelCard
-                key={card._id}
-                id={card._id}
-                title={card.title}
-                subtitle={card.subtitle}
-                mentors={card.mentors}
-                url={card.url}
-                isMentorsPage={isMentorsPage}
-                isSidebarOpen={isSidebarOpen}
-                onClick={() =>
-                  handleCardSelect(card.url, card.title, [card._id])
-                }
-              />
-            ))}
+        // When no content is selected, show navigation and mentor sections
+        <>
+          <div className="section-links">
+            <a href="#mentor-panels">Mentor Panels</a>
+            <a href="#individual-mentors">Individual Mentors</a>
           </div>
-          <div className="mentor-cards">
-            {filteredMentors.map((mentor) => (
-              <Card
-                key={mentor._id.$oid}
-                id={mentor._id.$oid}
-                name={mentor.name}
-                title={mentor.title}
-                thumbnail={mentor.thumbnail}
-                mentorUrl={mentor.mentorUrl}
-                isMentorsPage={isMentorsPage}
-                isSidebarOpen={isSidebarOpen}
-                onClick={() =>
-                  handleCardSelect(mentor.mentorUrl, mentor.name, [
-                    mentor._id.$oid,
-                  ])
-                }
-              />
-            ))}
+
+          <div className="mentor-grid">
+            <div className="mentor-panels" id="mentor-panels">
+              {panels.map((card) => (
+                <PanelCard
+                  key={card._id}
+                  id={card._id}
+                  title={card.title}
+                  subtitle={card.subtitle}
+                  mentors={card.mentors}
+                  url={card.url}
+                  isMentorsPage={isMentorsPage}
+                  isSidebarOpen={isSidebarOpen}
+                  onClick={() =>
+                    handleCardSelect(card.url, card.title, [card._id])
+                  }
+                />
+              ))}
+            </div>
+
+            <div className="mentor-cards" id="individual-mentors">
+              {filteredMentors.map((mentor) => (
+                <Card
+                  key={mentor._id.$oid}
+                  id={mentor._id.$oid}
+                  name={mentor.name}
+                  title={mentor.title}
+                  thumbnail={mentor.thumbnail}
+                  mentorUrl={mentor.mentorUrl}
+                  isMentorsPage={isMentorsPage}
+                  isSidebarOpen={isSidebarOpen}
+                  onClick={() =>
+                    handleCardSelect(mentor.mentorUrl, mentor.name, [
+                      mentor._id.$oid,
+                    ])
+                  }
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
 
       {showExtras &&
@@ -233,6 +270,8 @@ const MentorPal = ({
         ) : (
           <Footer />
         ))}
+
+      <BackToTop />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import {
   FaGraduationCap,
   FaBriefcase,
   FaComments,
-  FaSearch,
+  FaSearch
 } from "react-icons/fa";
 import GetResearchExperience from "../GetResearchExperience/GetResearchExperience";
 import ExploreCareers from "../ExploreCareers/ExploreCareers";
@@ -22,26 +22,22 @@ import Footer from "../../components/Footer/Footer";
 import { Mentors } from "../Mentors/Mentors";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import PopupModals from "../../components/PopupModals/PopupModals";
-import BackToTop from "../../components/BackToTop/BackToTop";
-import Disclaimer from "../../components/Disclaimer/Disclaimer";
 
 const MainContent = ({ isSidebarOpen }) => {
   const location = useLocation();
-
+  
   // Array of paths where Subhead should appear
   const pathsWithSubhead = [
-    "",
-    "/get-research-experience",
-    "/explore-careers",
-    "/find-graduate-schools",
-    "/talk-to-an-expert",
-    "/find-internships",
+    '',
+    '/get-research-experience',
+    '/explore-careers',
+    '/find-graduate-schools',
+    '/talk-to-an-expert',
+    '/find-internships'
   ];
 
   // Check if current path should show Subhead
-  const shouldShowSubhead = pathsWithSubhead.includes(
-    location.pathname.replace("/recommenderpage", "")
-  );
+  const shouldShowSubhead = pathsWithSubhead.includes(location.pathname.replace('/recommenderpage', ''));
 
   return (
     <div
@@ -49,15 +45,10 @@ const MainContent = ({ isSidebarOpen }) => {
         isSidebarOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >
-      {shouldShowSubhead && <Subhead isSidebarOpen={isSidebarOpen} />}
-      <div
-        className="content"
-        style={{ paddingTop: shouldShowSubhead ? "50px" : "0" }} // Adjust padding dynamically
-      >
+      {shouldShowSubhead && <Subhead />}
+      <div className="content">
         <Outlet />
       </div>
-      {shouldShowSubhead && <BackToTop />} {/* Ensure this is conditionally rendered */}
-      <Disclaimer />
     </div>
   );
 };
@@ -73,50 +64,50 @@ const RecommenderPage = () => {
     {
       path: "/recommenderpage/get-research-experience",
       name: "Research Experience",
-      icon: <FaSearch />,
+      icon: <FaSearch />
     },
     {
       path: "/recommenderpage/explore-careers",
       name: "Explore Careers",
-      icon: <FaBriefcase />,
+      icon: <FaBriefcase />
     },
     {
       path: "/recommenderpage/find-graduate-schools",
       name: "Graduate Schools",
-      icon: <FaGraduationCap />,
+      icon: <FaGraduationCap />
     },
     {
       path: "/recommenderpage/talk-to-an-expert",
       name: "Talk to Expert",
-      icon: <FaComments />,
+      icon: <FaComments />
     },
     {
       path: "/recommenderpage/find-internships",
       name: "Internships",
-      icon: <FaTh />,
+      icon: <FaTh />
     },
     {
       path: "/recommenderpage/bookmarks",
       name: "Bookmarks",
-      icon: <FaBookmark />,
+      icon: <FaBookmark />
     },
     {
       path: "/recommenderpage/mentors",
       name: "Mentors",
-      icon: <FaUserTie />,
+      icon: <FaUserTie />
     },
     {
       path: "/recommenderpage/settings",
       name: "Settings",
-      icon: <FaCogs />,
-    },
+      icon: <FaCogs />
+    }
   ];
 
   return (
     <>
       <PopupModals />
-      <Sidebar
-        isOpen={isSidebarOpen}
+      <Sidebar 
+        isOpen={isSidebarOpen} 
         toggleSidebar={toggleSidebar}
         menuItems={menuItems}
       >

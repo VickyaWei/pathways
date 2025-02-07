@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
-import "./DegreeDropdown.css";
+
 
 const degreeOptions = [
   { value: 'Masters', label: 'Masters' },
@@ -38,7 +38,44 @@ const DegreeDropdown = ({ onDegreeChange }) => {
 
   return (
     <div className="degree-dropdown-container">
-      <FormControl sx={{ m: 1, width: 300 }}>
+    <FormControl
+      sx={{
+        m: 1,
+        width: {
+          xs: '150px',
+          sm: '300px',
+          md: '400px',
+        },
+        '& .MuiOutlinedInput-root': {
+          height: { xs: '30px', sm: '50px' },
+          fontSize: { xs: '11px', sm: '12px' },
+        },
+        '& .MuiInputLabel-root': {
+          fontSize: { xs: '11px', sm: '12px' },
+          transform: 'translate(14px, 8px) scale(1)',
+          '&.Mui-focused, &.MuiFormLabel-filled': {
+            transform: 'translate(14px, -9px) scale(0.75)',
+          }
+        },
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderRadius: '4px',
+        },
+        '& .MuiSelect-select': {
+          fontSize: { xs: '11px', sm: '12px' },
+          lineHeight: '1.2',
+        },
+        '& .MuiMenuItem-root': {
+          fontSize: { xs: '5px', md: '12px' },
+          minHeight: '32px',
+        },
+        '& .MuiListItemText-primary': {
+          fontSize: { xs: '11px', md: '30px' },
+        },
+        '& .MuiCheckbox-root': {
+          padding: '4px',
+        }
+      }}
+    >
         <InputLabel id="degree-dropdown-label">Filter by Degree Level</InputLabel>
         <Select
           labelId="degree-dropdown-label"

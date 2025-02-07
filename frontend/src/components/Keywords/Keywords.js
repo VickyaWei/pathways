@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import './Keywords.css';
+import React, { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import "./Keywords.css";
 
 const Keywords = ({ selectedKeywords, handleCheckboxChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [openDropdowns, setOpenDropdowns] = useState({});
+
   const keywordItems = [
     {
       title: "Select Keywords",
@@ -65,7 +68,18 @@ const Keywords = ({ selectedKeywords, handleCheckboxChange }) => {
     },
   ];
 
-  const [openDropdowns, setOpenDropdowns] = useState({});
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".keywords-wrapper")) setIsOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = (id) => {
     setOpenDropdowns((prev) => ({
@@ -90,20 +104,27 @@ const Keywords = ({ selectedKeywords, handleCheckboxChange }) => {
   const renderMenuItems = (items) =>
     items.map((item) => (
       <div key={item.id} className="dropdown-item">
-        <div className="dropdown-trigger">
+        <div
+          className="dropdown-trigger"
+          onClick={() => (isMobile ? toggleDropdown(item.id) : null)}
+        >
           {item.title}
         </div>
-        <div className="dropdown-content">
-          {renderSubItems(item.children)}
-        </div>
+        {(isMobile ? openDropdowns[item.id] : true) && (
+          <div className="dropdown-content">
+            {renderSubItems(item.children)}
+          </div>
+        )}
       </div>
     ));
 
   return (
     <div className="keywords-wrapper">
-      <div 
+      <div
         className="dropdown-button"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls="dropdown-menu"
       >
         <span>Select Keywords</span>
         <ChevronDown size={16} />

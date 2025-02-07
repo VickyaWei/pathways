@@ -1,2 +1,9 @@
 
+@media (max-width: 768px) {
+    .main-container.sidebar-open {
+      margin-left: 0 !important; 
+      width: 100% !important; 
+      /* or any rules to prevent pushing content wide */
+    }
+  }
   

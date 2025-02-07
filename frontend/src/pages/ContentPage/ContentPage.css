@@ -119,14 +119,59 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .content-page {
-    height: 500px;
-    margin-top: 10px;
+    max-width: 450px;
+    margin: 10px auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arrow {
+    width: 2.5rem; 
+    height: 2.5rem;
   }
 
   .lets-go-button {
     font-size: 12px;
     padding: 6px 12px;
+    top: 47%;
   }
+}
+
+@media screen and (max-width: 460px) {
+  .content-page {
+    max-width: 420px;
+    /* height: 450px; */
+    /* margin: 5px auto; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .arrow {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .arrow-left {
+top: 310px;
+    left: -15px;
+  }
+
+  .arrow-right {
+
+    right: -15px;
+  }
+
+  .lets-go-button {
+
+    right: -30px;
+    padding: 5px 10px;
+    font-size: 11px;
+    border-radius: 6px;
+  }
+
+
+
 }

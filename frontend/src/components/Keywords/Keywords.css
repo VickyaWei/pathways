@@ -91,3 +91,62 @@
 .checkbox-item:hover {
   background-color: #f8f9fa;
 }
+
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .keywords-wrapper {
+    width: 100%; 
+  }
+
+  .dropdown-button {
+    padding: 12px 14px;
+    font-size: 12px;
+    min-width: auto; /* Remove fixed min-width for better scaling */
+    width: 100%; /* Take full width on mobile */
+    box-sizing: border-box;
+  }
+
+  .dropdown-items {
+    min-width: auto; /* Remove fixed width */
+    width: 100%; /* Dropdown takes full width on mobile */
+    margin-top: 6px;
+    border-radius: 0; /* Optional: flat edges for a clean mobile look */
+    box-shadow: none; /* Reduce shadow for simplicity on smaller screens */
+  }
+
+  .dropdown-item {
+    padding: 3px 3px; /* Adjust spacing */
+  }
+
+  .dropdown-trigger {
+    padding: 6px; /* Adjust padding for touch accessibility */
+    font-size: 14px; /* Slightly smaller font */
+  }
+
+  .dropdown-content {
+    left: 0; /* Stack the submenu directly under the parent for easier navigation */
+    top: 100%;
+    width: 100%;
+    position: static; /* Avoid overflows */
+    border: none; /* Optional: cleaner look */
+    box-shadow: none;
+  }
+
+  .checkbox-item {
+    padding: 8px 12px; /* Reduce padding for compact display */
+    font-size: 10px;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 18px; /* Larger checkbox for better touch targets */
+    height: 18px;
+    margin-right: 8px;
+  }
+
+  .dropdown-trigger:hover,
+  .checkbox-item:hover {
+    display: block;
+    background-color: #f2f2f2; /* Subtle hover effect */
+  }
+}

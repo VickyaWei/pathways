@@ -56,7 +56,7 @@
   display: block; 
 }
 
-/* Highlight the image in the first tile */
+
 .intro-tile.highlighted .intro-tile-image {
   border-radius: 8px 8px 0 0;
 }
@@ -71,26 +71,23 @@
   z-index: 2; /* Ensure it's on top */
   padding: 5px; /* Adds space around the number */
 }
-/* Highlight the first tile container */
+
 .intro-tile.highlighted {
 
   border: 2px solid #ffffff; /* Add border around the tile */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
 }
 
-/* Highlight the number in the first tile */
+
 .intro-tile.highlighted .intro-tile-number {
   color: #084b8a;
   font-weight: bold;
 }
 
-/* Highlight the title in the first tile */
+
 .intro-tile.highlighted .intro-tile-title {
   color: #084b8a;
 }
-
-
-
 
 
 .intro-tile-title {
@@ -111,7 +108,6 @@
 .intro-tile-arrow-highlighted {
   color: #084b8a;
 }
-
 
 
 .collapse-arrow {
@@ -168,11 +164,14 @@
   gap: 20px;
   justify-self: center;
   align-items: center;
-  margin-bottom: 40px;  
+  margin-bottom: 30px;  
   margin-top: 30px;
-  margin-left: 500px;
+
 }
 
+.section-links {
+  display: none; 
+}
 
 .mentorpal .mentor-grid {
   display: grid;
@@ -226,7 +225,6 @@
 }
 
 
-
 .embedded-content-frame {
   width: 100%;
   position: relative;
@@ -242,3 +240,162 @@
   border: none;
 }
 
+@media screen and (max-width: 768px) {
+
+  .intro-tiles-container {
+    display: none; /* Fully hide the tiles container */
+  }
+
+  .mentor-keywords {
+    display: none;
+  }
+
+  .arrow-icon, .collapse-arrow{
+    display: none;
+  }
+
+  .section-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: -10px;
+    margin-bottom: 40px;
+  }
+
+  
+  .section-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #f0f0f0;
+    font-size: 14px;
+    border: 1px solid #084b8a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #084b8a;
+    transition: all 0.3s ease;
+    font-family: "Arial", sans-serif;
+  }
+
+  .section-links a:hover {
+    background-color: #084b8a;
+    color: white;
+  }
+
+
+  .mentor-search-container {
+    display: flex;
+  }
+
+  .mentorpal .mentor-grid {
+    padding: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .mentor-panels,
+  .mentor-cards {
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+  }
+
+  .mentorpal.embedded .header {
+    display: none;
+  }
+  
+  .embedded-content-frame {
+    width: 100%;
+    position: relative;
+    padding-top: 120% ; 
+  }
+  
+  /* .content-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  } */
+  
+
+}
+
+@media screen and (max-width: 460px) {
+  .intro-tiles-container {
+    display: none; /* Fully hide the tiles container */
+  }
+
+  .mentor-keywords {
+    display: none;
+  }
+
+  .arrow-icon, .collapse-arrow{
+    display: none;
+  }
+
+  .section-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    height: 30px;
+    margin-top: -15px;
+    margin-bottom: 30px;
+  }
+
+  
+  .section-links a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #f0f0f0;
+    font-size: 14px;
+    border: 1px solid #084b8a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #084b8a;
+    transition: all 0.3s ease;
+    font-family: "Arial", sans-serif;
+  }
+
+  .section-links a:hover {
+    background-color: #084b8a;
+    color: white;
+  }
+
+
+  .mentor-search-container {
+    display: flex;
+  }
+
+  .mentorpal .mentor-grid {
+    padding: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .mentor-panels,
+  .mentor-cards {
+    grid-template-columns: 1fr; /* Single column layout for small screens */
+  }
+
+  .mentorpal.embedded .header {
+    display: none;
+  }
+  
+  .embedded-content-frame {
+    width: 100%;
+    position: relative;
+    padding-top: 120% ; 
+  }
+  
+  /* .content-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  } */
+  
+
+}

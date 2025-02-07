@@ -6,12 +6,6 @@
 }
 
 
-.dropdown-list {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .career-highlighted-paragraph {
   font-size: 24px;
   font-weight: 600;
@@ -35,12 +29,6 @@
   border-radius: 2px;
 }
 
-
-.dropdown-list {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
 
 .start-container {
   display: flex;
@@ -80,8 +68,13 @@
 }
 
 @media (max-width: 768px) {
+  .resource-container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .career-highlighted-paragraph {
-    font-size: 18px; /* Smaller font for smaller screens */
+    font-size: 10px; 
     text-align: center;
   }
 
@@ -90,9 +83,18 @@
     left: 10%; 
   }
 
-  .resource-container {
+  .start-container,
+  .career-change-container {
     display: flex;
     flex-direction: column;
+    align-items: center; 
+    margin-top: -20px;
+    margin-left: 50px;
   }
-
+  
+  .career-change-container .general-tiles,
+  .career-change-container .additional-tiles{
+    grid-template-columns: 1fr; 
+    margin-top: 0; 
+  }
 }

@@ -5,31 +5,27 @@
   background: #084b8a;
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;  /* Slight rounding of corners */
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   opacity: 0.9;
+  padding: 12px;
 }
 
 .back-to-top:hover {
-  transform: translateY(-5px);
   opacity: 1;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-.back-to-top svg {
+.back-to-top-icon {
   width: 28px;
   height: 28px;
-  fill: white;
-  transition: transform 0.3s ease;
-}
-
-.back-to-top:hover svg {
-  transform: scale(1.2);
+  color: white;
 }
